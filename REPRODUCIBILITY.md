@@ -101,9 +101,9 @@ Supporting runs:
 
 ```
 $ python src/ddm_stability.py /tmp/mpm-data/rt.csv --repeats 8 --dt 0.0001
-run 1: pre mu=1.415 sigma=1.829 B=1.866 t=464ms loss=457.11 | post mu=0.000 sigma=2.387 B=1.737 t=682ms loss=461.44
-run 2: pre mu=1.459 sigma=1.884 B=1.930 t=461ms loss=457.12 | post mu=0.000 sigma=2.373 B=1.727 t=681ms loss=461.44
-run 3: pre mu=1.211 sigma=1.564 B=1.601 t=462ms loss=457.11 | post mu=0.000 sigma=2.420 B=1.758 t=682ms loss=461.45
+run 1: pre mu=1.415 sigma=1.829 B=1.866 t=464ms loss=457.11  post mu=0.000 sigma=2.387 B=1.737 t=682ms loss=461.44
+run 2: pre mu=1.459 sigma=1.884 B=1.930 t=461ms loss=457.12  post mu=0.000 sigma=2.373 B=1.727 t=681ms loss=461.44
+run 3: pre mu=1.211 sigma=1.564 B=1.601 t=462ms loss=457.11  post mu=0.000 sigma=2.420 B=1.758 t=682ms loss=461.45
 ...  (8 runs; loss range 457.105-457.192 pre, 461.441-461.516 post)
 ```
 
@@ -115,8 +115,9 @@ not, while fitting the data equally well. Across the 8 runs μ/σ = 0.774 ± 0.0
 $ python src/analyze.py /tmp/mpm-data/rt.csv --questionnaires /tmp/mpm-data/q.csv \
       --ddm-dt 0.0001 --out results-refit          # 240 fits, 45 min
 $ python src/compare_ddm.py /tmp/mpm-data/ddm.csv results-refit/ddm_refit.csv
-  drift r=0.894  noise r=0.791  bound r=0.173  nondectime r=0.998
-  drift/noise r=0.999   bound/noise r=0.991
+# (from the JSON it prints, saved as results/ddm_refit_comparison_dt1e-4.json)
+#   pearson r  drift 0.894   noise 0.791   bound 0.173   nondectime 0.998
+#   pearson r  drift/noise 0.999   bound/noise 0.991
 ```
 
 Recomputing Table 1 on those refitted parameters changes all twenty-four F values. At the authors'
