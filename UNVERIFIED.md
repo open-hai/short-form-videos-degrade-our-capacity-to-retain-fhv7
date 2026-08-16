@@ -114,7 +114,8 @@ artifact lets anyone check.
 19. **No ART-C.** The post-hoc contrasts use pairwise tests on the same aligned ranks with Holm
     correction, not ARTool's ART-C with Kenward-Roger degrees of freedom.
 
-20. **DDM refits.** The full 240-cell refits reported here were run at dx = 1e-3 with the
-    authors' other settings. Whether an exhaustive search at their dt = 1e-4 with many restarts
-    would converge on their published per-cell values cannot be settled, because the model is
-    scale-unidentified in the first place: any (μ, σ, B) on the same ray fits equally well.
+20. **DDM refits.** The 240-cell refits reported here were run twice: once at the authors' own
+    dt = 1e-4 and once at dt = 1e-3, both with dx = 1e-3 and their other settings. Whether an
+    exhaustive search with many restarts would converge on their published per-cell values cannot
+    be settled, because the model is scale-unidentified in the first place: any (μ, σ, B) on the
+    same ray fits equally well, so "the" published values are not a target a refit can hit.

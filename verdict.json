@@ -1,9 +1,14 @@
 {
   "schema": 1,
   "verdict": "partial",
-  "summary": "The paper's headline empirical claim reproduces exactly from the authors' released CC-0 trial data: prospective-memory accuracy collapses after a TikTok interruption and nowhere else, with every published coefficient, confidence interval and t value of the accuracy LMMs recovered to the precision printed (PM: intercept 0.487 CI [0.40,0.57] t(110)=10.94; Rest beta=0.456 t=7.25; Twitter 0.489/7.77; YouTube 0.342/5.42). Table 1 comes back with 22 of 24 F values matching to three decimals from the released DDM parameters, the questionnaire ANOVAs match exactly and two of three Bayes factors match to four digits. Six components reproduce only partially and one is blocked. The heaviest finding is not an arithmetic failure but a modelling one: the DDM is specified with drift, noise and bound all free, so the three are identified only up to a common scale factor, the optimiser is unseeded, and refitting all 240 cells gives bound estimates correlating r=0.17 with the published ones while the ratios correlate r>0.99 - recomputing Table 1 on refits flips 4 of 24 significance decisions, including the reported significant effect of interruption on the PM decision bound. Two further contradictions: the paper's 'we did not report any significant results' for reaction times is contradicted by the authors' own released supplementary notebook and by this re-implementation (LD RT TikTok x post p<.001; PM RT YouTube x post p=.007), and the released data contain 14 PM cue trials per block rather than the 16 the method states. The outer loop here is the entire human study - 60 participants doing a dual lexical-decision/prospective-memory task around a personalised 10-minute social-media interruption - and none of it was attempted or simulated; what makes so much of this paper checkable at all is that the authors published trial-level data.",
+  "summary": "The paper's headline empirical claim reproduces exactly from the authors' released CC-0 trial data: prospective-memory accuracy collapses after a TikTok interruption and nowhere else, with every published coefficient, confidence interval and t value of the accuracy LMMs recovered to the precision printed (PM: intercept 0.487 CI [0.40,0.57] t(110)=10.94; Rest beta=0.456 t=7.25; Twitter 0.489/7.77; YouTube 0.342/5.42). Table 1 comes back with 22 of 24 F values matching to three decimals from the released DDM parameters, the questionnaire ANOVAs match exactly and two of three Bayes factors match to four digits. Six components reproduce only partially and one is blocked. The heaviest finding is not an arithmetic failure but a modelling one: the DDM is specified with drift, noise and bound all free, so the three are identified only up to a common scale factor, the optimiser is unseeded, and refitting all 240 cells at the authors' own settings gives bound estimates correlating r=0.17 with the published ones while the ratios the model does identify correlate r>0.99. Table 1's PM conclusions survive that refit (1 of 24 significance decisions flips, and it flips the paper's claim that nothing is significant in the LD task), but at a coarser time step 4 flip, including the reported significant effect of interruption on the PM decision bound - the published F values are therefore tied to one optimiser draw at one discretisation. Two further contradictions: the paper's 'we did not report any significant results' for reaction times is contradicted by the authors' own released supplementary notebook and by this re-implementation (LD RT TikTok x post p<.001; PM RT YouTube x post p=.007), and the released data contain 14 PM cue trials per block rather than the 16 the method states. The outer loop here is the entire human study - 60 participants doing a dual lexical-decision/prospective-memory task around a personalised 10-minute social-media interruption - and none of it was attempted or simulated; what makes so much of this paper checkable at all is that the authors published trial-level data.",
   "graded_at": "2026-08-16T16:20:00Z",
-  "components": { "verified": 9, "partial": 6, "blocked": 1, "total": 16 },
+  "components": {
+    "verified": 9,
+    "partial": 6,
+    "blocked": 1,
+    "total": 16
+  },
   "boundary": [
     {
       "claim": "Response accuracy is the number of correct key presses divided by the number of key presses, derived per participant, task, condition and block",
@@ -63,13 +68,13 @@
       "claim": "A four-parameter drift-diffusion model was fitted with PyDDM per participant, task and block (240 fits)",
       "loop": "inner",
       "outcome": "partial",
-      "evidence": "Refitting all 240 cells with the authors' settings recovers non-decision time (r = 0.999, 0.3% median deviation) but not the rest: drift r = 0.88, noise r = 0.77, bound r = 0.17, ~12% median deviation each, while drift/noise r = 0.999 and bound/noise r = 0.994. With sigma left free and no seed the model is identified only up to a common scale factor, so the published parameter values are one draw",
+      "evidence": "Refitting all 240 cells at the authors' own dt = 1e-4 recovers non-decision time (r = 0.998, 0.3% median deviation) but not the rest: drift r = 0.89, noise r = 0.79, bound r = 0.17, ~14% median deviation each, while drift/noise r = 0.999 and bound/noise r = 0.991. With sigma left free and no seed the model is identified only up to a common scale factor, so the published parameter values are one draw and no refit can be expected to land on them",
       "citation": "Sections 3.6 and 4.1.3",
       "mismatch": {
         "kind": "numeric",
         "reported": "per-participant drift, noise and bound as published in ddm.csv",
         "observed": "refits on the same data with the same settings",
-        "delta": "bound Pearson r = 0.17; median absolute deviation 12% for drift, noise and bound"
+        "delta": "bound Pearson r = 0.17; median absolute deviation ~14% for drift, noise and bound at the authors' own discretisation"
       }
     },
     {
@@ -81,8 +86,8 @@
       "mismatch": {
         "kind": "numeric",
         "reported": "PM bound: interruption F = 3.020 (p = .037, marked significant), interaction F = 2.385",
-        "observed": "F = 3.221 (p = .029) and F = 2.233 (p = .094) from the released parameters; on refitted parameters F = 0.948 (p = .424) and 0.713",
-        "delta": "+0.201 and -0.152 on the released parameters; the reported significant bound effect disappears entirely on a refit"
+        "observed": "F = 3.221 (p = .029) and F = 2.233 (p = .094) from the released parameters; on parameters refitted at the authors' dt = 1e-4 F = 2.896 (p = .043) and 1.212, and at dt = 1e-3 F = 0.948 (p = .424) and 0.713",
+        "delta": "+0.201 and -0.152 on the released parameters; the PM bound effect stays significant on a refit at the authors' settings but disappears at a coarser time step"
       }
     },
     {
@@ -237,7 +242,7 @@
       "question": "Every DDM fitting detail: which parameters are free, their search ranges, the loss function, the optimiser, dx, dt, and the random seed",
       "where": "Section 3.6 names the four parameters and Section 4.1.3 says only 'We used PyDDM to fit responses in the LD and PM tasks per participant'; everything else lives in the unreferenced notebook appendix2_ddm_fitting.ipynb",
       "assumed": "drift in [0,50], noise in [0.5,4], bound in [0.1,2], non-decision in [0,1], LossRobustBIC, differential evolution, dx = 1e-3, T_dur = 3 s, no seed (dt = 1e-3 for the 240-cell refits, 1e-4 for the pooled fits)",
-      "sensitivity": "High: leaving sigma free makes (mu, sigma, B) identified only up to a common scale, so 8 unseeded repeats of the same fit give mu in [1.21, 1.46] at constant loss; refits correlate r = 0.17 with the published bound values; recomputing Table 1 on refits flips 4 of 24 significance decisions, including the reported significant effect of interruption on PM bound (p = .037 -> .424) and two nulls in the LD task that become significant. 7 of 120 PM bound estimates sit exactly on the search boundary B = 2"
+      "sensitivity": "High: leaving sigma free makes (mu, sigma, B) identified only up to a common scale, so 8 unseeded repeats of the same pooled fit give mu in [1.21, 1.46] at constant loss, and full refits correlate r = 0.17 with the published bound values. Recomputing Table 1 on refits changes all 24 F values: at the authors' dt = 1e-4 one significance decision flips (LD drift x interruption .067 -> .019, contradicting the paper's LD null), at dt = 1e-3 four flip including the reported PM bound effect (.037 -> .424). 7 of 120 PM bound estimates sit exactly on the search boundary B = 2"
     },
     {
       "question": "Which normality test on what, at which alpha, and which effect size on each branch of the ART / parametric decision?",

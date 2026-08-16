@@ -1,0 +1,35 @@
+{
+  "n_cells": 240,
+  "parameters": {
+    "drift": {
+      "pearson_r": 0.8935146862770026,
+      "median_abs_diff": 0.3844844497367923,
+      "median_abs_pct_diff": 14.46019460705082
+    },
+    "noise": {
+      "pearson_r": 0.7912561028846582,
+      "median_abs_diff": 0.25796657224492925,
+      "median_abs_pct_diff": 13.471575726921076
+    },
+    "bound": {
+      "pearson_r": 0.17321981667877007,
+      "median_abs_diff": 0.2279149273287282,
+      "median_abs_pct_diff": 13.881725495847174
+    },
+    "nondectime": {
+      "pearson_r": 0.9981588710823064,
+      "median_abs_diff": 0.0015330441302218445,
+      "median_abs_pct_diff": 0.28499165266360416
+    }
+  },
+  "ratios": {
+    "drift_over_noise": {
+      "pearson_r": 0.9986361940306454,
+      "median_abs_diff": 0.0033531073687695923
+    },
+    "bound_over_noise": {
+      "pearson_r": 0.9906749388688934,
+      "median_abs_diff": 0.004906219718368077
+    }
+  }
+}
