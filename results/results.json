@@ -1,0 +1,2539 @@
+{
+  "input": "/tmp/mpm-data/rt.csv",
+  "started": "2026-08-16T14:27:20Z",
+  "data_description": {
+    "n_participants": 60,
+    "participants_per_condition": {
+      "rest": 15,
+      "tiktok": 15,
+      "twitter": 15,
+      "youtube": 15
+    },
+    "n_trials_total": 21480,
+    "n_trials_by_block_and_task": {
+      "post/LD": 9581,
+      "post/PM": 859,
+      "pre/LD": 9598,
+      "pre/PM": 842,
+      "train/LD": 519,
+      "train/PM": 81
+    },
+    "no_response_trials": 103,
+    "pm_cue_trials_per_participant_per_block": {
+      "mean": 14.0,
+      "min": 14,
+      "max": 14
+    },
+    "trials_labelled_PM_without_a_PM_cue_stimulus": 79,
+    "trials_labelled_LD_with_a_PM_cue_stimulus": 37,
+    "non_cue_stimulus_length": {
+      "min": 4,
+      "max": 8,
+      "mean": 5.81875,
+      "share_outside_6_to_8_letters": 0.446875
+    }
+  },
+  "lmm": [
+    {
+      "model": "LD accuracy ~ interrupt + (1|folder_id)",
+      "formula": "accuracy ~ C(interrupt, Treatment(\"tiktok\"))",
+      "n_observations": 120,
+      "df": 114,
+      "r2_marginal": 0.05326607787786845,
+      "r2_conditional": 0.9905583981490258,
+      "terms": [
+        {
+          "term": "Intercept",
+          "beta": 0.979165356365481,
+          "se": 0.032193169094545816,
+          "ci_low": 0.9153909363417513,
+          "ci_high": 1.0429397763892105,
+          "t": 30.415314301299144,
+          "df": 114,
+          "p": 1.5546180848461662e-56
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.rest]",
+          "beta": -0.0014480666733022434,
+          "se": 0.04552801634927707,
+          "ci_low": -0.09163871640333901,
+          "ci_high": 0.08874258305673452,
+          "t": -0.03180605678475243,
+          "df": 114,
+          "p": 0.974682335379847
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.twitter]",
+          "beta": 0.004998673479436711,
+          "se": 0.04552801634927708,
+          "ci_low": -0.08519197625060007,
+          "ci_high": 0.09518932320947349,
+          "t": 0.1097933510014671,
+          "df": 114,
+          "p": 0.9127663063846368
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.youtube]",
+          "beta": -0.06706414870447655,
+          "se": 0.04552801634927708,
+          "ci_low": -0.15725479843451334,
+          "ci_high": 0.023126501025560228,
+          "t": -1.47303032466824,
+          "df": 114,
+          "p": 0.14349858680305652
+        }
+      ]
+    },
+    {
+      "model": "PM accuracy ~ interrupt * measure + (1|folder_id)",
+      "formula": "accuracy ~ C(interrupt, Treatment(\"tiktok\")) * C(measure, Treatment(\"post\"))",
+      "n_observations": 120,
+      "df": 110,
+      "r2_marginal": 0.3996198749674383,
+      "r2_conditional": 0.6670289357248922,
+      "terms": [
+        {
+          "term": "Intercept",
+          "beta": 0.4870462870462914,
+          "se": 0.044517954762720996,
+          "ci_low": 0.3988221498659914,
+          "ci_high": 0.5752704242265914,
+          "t": 10.940446155764109,
+          "df": 110,
+          "p": 2.702305446516668e-19
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.rest]",
+          "beta": 0.456343656343652,
+          "se": 0.06295789539455193,
+          "ci_low": 0.33157588501460744,
+          "ci_high": 0.5811114276726965,
+          "t": 7.248394398888082,
+          "df": 110,
+          "p": 6.188930660364052e-11
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.twitter]",
+          "beta": 0.4891441891441849,
+          "se": 0.06295789539455193,
+          "ci_low": 0.3643764178151403,
+          "ci_high": 0.6139119604732295,
+          "t": 7.769385969444478,
+          "df": 110,
+          "p": 4.463347974343262e-12
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.youtube]",
+          "beta": 0.34152514152513724,
+          "se": 0.06295789539455193,
+          "ci_low": 0.21675737019609267,
+          "ci_high": 0.46629291285418184,
+          "t": 5.4246594392145315,
+          "df": 110,
+          "p": 3.484363719681368e-07
+        },
+        {
+          "term": "C(measure, Treatment(\"post\"))[T.pre]",
+          "beta": 0.3142357642357612,
+          "se": 0.046885688226225526,
+          "ci_low": 0.22131933508014495,
+          "ci_high": 0.4071521933913775,
+          "t": 6.702168105532753,
+          "df": 110,
+          "p": 9.138843754692232e-10
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.rest]:C(measure, Treatment(\"post\"))[T.pre]",
+          "beta": -0.36145798645798327,
+          "se": 0.06630637617072477,
+          "ci_low": -0.49286166073713483,
+          "ci_high": -0.2300543121788317,
+          "t": -5.451330736689728,
+          "df": 110,
+          "p": 3.0968773201493626e-07
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.twitter]:C(measure, Treatment(\"post\"))[T.pre]",
+          "beta": -0.42485847485847184,
+          "se": 0.06630637617072477,
+          "ci_low": -0.5562621491376234,
+          "ci_high": -0.2934548005793203,
+          "t": -6.4075055732883355,
+          "df": 110,
+          "p": 3.778198789888258e-09
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.youtube]:C(measure, Treatment(\"post\"))[T.pre]",
+          "beta": -0.31368631368631056,
+          "se": 0.06630637617072477,
+          "ci_low": -0.4450899879654621,
+          "ci_high": -0.182282639407159,
+          "t": -4.730861974399494,
+          "df": 110,
+          "p": 6.684388152680086e-06
+        }
+      ]
+    },
+    {
+      "model": "LD vs PM accuracy ~ interrupt * task + (1|folder_id)",
+      "formula": "accuracy ~ C(interrupt, Treatment(\"rest\")) * C(task, Treatment(\"LD\"))",
+      "n_observations": 240,
+      "df": 230,
+      "r2_marginal": 0.3066188637399089,
+      "r2_conditional": 0.3800088984891766,
+      "terms": [
+        {
+          "term": "Intercept",
+          "beta": 0.9777172896921855,
+          "se": 0.03074898505642942,
+          "ci_low": 0.9171315874395422,
+          "ci_high": 1.038302991944829,
+          "t": 31.796733710004226,
+          "df": 230,
+          "p": 3.787352157986354e-86
+        },
+        {
+          "term": "C(interrupt, Treatment(\"rest\"))[T.tiktok]",
+          "beta": 0.0014480666732919476,
+          "se": 0.04348563169601011,
+          "ci_low": -0.0842330551382945,
+          "ci_high": 0.0871291884848784,
+          "t": 0.03329988818869591,
+          "df": 230,
+          "p": 0.9734643229769867
+        },
+        {
+          "term": "C(interrupt, Treatment(\"rest\"))[T.twitter]",
+          "beta": 0.006446740152730241,
+          "se": 0.04348563169601011,
+          "ci_low": -0.07923438165885621,
+          "ci_high": 0.09212786196431669,
+          "t": 0.14824989085582818,
+          "df": 230,
+          "p": 0.8822754492743304
+        },
+        {
+          "term": "C(interrupt, Treatment(\"rest\"))[T.youtube]",
+          "beta": -0.06561608203118387,
+          "se": 0.043485631696010114,
+          "ci_low": -0.15129720384277034,
+          "ci_high": 0.020065039780402597,
+          "t": -1.5089140820093976,
+          "df": 230,
+          "p": 0.1326931884587583
+        },
+        {
+          "term": "C(task, Treatment(\"LD\"))[T.PM]",
+          "beta": -0.05793845741334791,
+          "se": 0.03910259892583991,
+          "ci_low": -0.13498355049456215,
+          "ci_high": 0.01910663566786633,
+          "t": -1.4817034929885653,
+          "df": 230,
+          "p": 0.13978792951970262
+        },
+        {
+          "term": "C(interrupt, Treatment(\"rest\"))[T.tiktok]:C(task, Treatment(\"LD\"))[T.PM]",
+          "beta": -0.27706272978796065,
+          "se": 0.05529942572495852,
+          "ci_low": -0.38602094533771153,
+          "ci_high": -0.16810451423820977,
+          "t": -5.010227975349711,
+          "df": 230,
+          "p": 1.08369069301844e-06
+        },
+        {
+          "term": "C(interrupt, Treatment(\"rest\"))[T.twitter]:C(task, Treatment(\"LD\"))[T.PM]",
+          "beta": -0.005346451552447098,
+          "se": 0.05529942572495852,
+          "ci_low": -0.114304667102198,
+          "ci_high": 0.10361176399730379,
+          "t": -0.09668186391371622,
+          "df": 230,
+          "p": 0.9230632345498224
+        },
+        {
+          "term": "C(interrupt, Treatment(\"rest\"))[T.youtube]:C(task, Treatment(\"LD\"))[T.PM]",
+          "beta": -0.02531659640150006,
+          "se": 0.05529942572495853,
+          "ci_low": -0.13427481195125096,
+          "ci_high": 0.08364161914825086,
+          "t": -0.4578093907777022,
+          "df": 230,
+          "p": 0.6475215842364461
+        }
+      ]
+    }
+  ],
+  "lmm_sensitivity_stimulus_labelled": [
+    {
+      "model": "LD accuracy ~ interrupt + (1|folder_id)",
+      "formula": "accuracy ~ C(interrupt, Treatment(\"tiktok\"))",
+      "n_observations": 120,
+      "df": 114,
+      "r2_marginal": 0.05370818935533994,
+      "r2_conditional": 0.9911603046043244,
+      "terms": [
+        {
+          "term": "Intercept",
+          "beta": 0.9803297383291837,
+          "se": 0.03217112517044914,
+          "ci_low": 0.9165989871493068,
+          "ci_high": 1.0440604895090606,
+          "t": 30.472348515483933,
+          "df": 114,
+          "p": 1.2851176491835244e-56
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.rest]",
+          "beta": 0.0001721540775643341,
+          "se": 0.04549684153285163,
+          "ci_low": -0.08995673858124281,
+          "ci_high": 0.09030104673637149,
+          "t": 0.003783868764604854,
+          "df": 114,
+          "p": 0.9969875302576195
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.twitter]",
+          "beta": 0.004041330853208712,
+          "se": 0.04549684153285163,
+          "ci_low": -0.08608756180559844,
+          "ci_high": 0.09417022351201586,
+          "t": 0.08882662437766395,
+          "df": 114,
+          "p": 0.9293755579082056
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.youtube]",
+          "beta": -0.06720656877389962,
+          "se": 0.04549684153285163,
+          "ci_low": -0.15733546143270677,
+          "ci_high": 0.02292232388490753,
+          "t": -1.477169986082928,
+          "df": 114,
+          "p": 0.14238735466945446
+        }
+      ]
+    },
+    {
+      "model": "PM accuracy ~ interrupt * measure + (1|folder_id)",
+      "formula": "accuracy ~ C(interrupt, Treatment(\"tiktok\")) * C(measure, Treatment(\"post\"))",
+      "n_observations": 120,
+      "df": 110,
+      "r2_marginal": 0.3813401119001009,
+      "r2_conditional": 0.6565227163646229,
+      "terms": [
+        {
+          "term": "Intercept",
+          "beta": 0.4842490842490854,
+          "se": 0.045670749605433075,
+          "ci_low": 0.3937403782720774,
+          "ci_high": 0.5747577902260934,
+          "t": 10.60304655458246,
+          "df": 110,
+          "p": 1.607846032692332e-18
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.rest]",
+          "beta": 0.4522588522588516,
+          "se": 0.06458819349574912,
+          "ci_low": 0.3242602127533281,
+          "ci_high": 0.580257491764375,
+          "t": 7.00219076863664,
+          "df": 110,
+          "p": 2.1018532778709668e-10
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.twitter]",
+          "beta": 0.4919413919413911,
+          "se": 0.06458819349574914,
+          "ci_low": 0.3639427524358676,
+          "ci_high": 0.6199400314469146,
+          "t": 7.616583857137421,
+          "df": 110,
+          "p": 9.70350249927247e-12
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.youtube]",
+          "beta": 0.33956043956043863,
+          "se": 0.06458819349574914,
+          "ci_low": 0.21156180005491512,
+          "ci_high": 0.46755907906596217,
+          "t": 5.257314397294403,
+          "df": 110,
+          "p": 7.250079951555799e-07
+        },
+        {
+          "term": "C(measure, Treatment(\"post\"))[T.pre]",
+          "beta": 0.3003663003663007,
+          "se": 0.04812560123020206,
+          "ci_low": 0.20499265466653926,
+          "ci_high": 0.3957399460660621,
+          "t": 6.2412996967983965,
+          "df": 110,
+          "p": 8.316119687415095e-09
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.rest]:C(measure, Treatment(\"post\"))[T.pre]",
+          "beta": -0.39145299145299195,
+          "se": 0.06805987795711112,
+          "ci_low": -0.5263316946945611,
+          "ci_high": -0.2565742882114228,
+          "t": -5.751597023134122,
+          "df": 110,
+          "p": 8.050129420665216e-08
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.twitter]:C(measure, Treatment(\"post\"))[T.pre]",
+          "beta": -0.4150183150183154,
+          "se": 0.06805987795711112,
+          "ci_low": -0.5498970182598845,
+          "ci_high": -0.2801396117767463,
+          "t": -6.097841011114433,
+          "df": 110,
+          "p": 1.6312496965172156e-08
+        },
+        {
+          "term": "C(interrupt, Treatment(\"tiktok\"))[T.youtube]:C(measure, Treatment(\"post\"))[T.pre]",
+          "beta": -0.31611721611721644,
+          "se": 0.06805987795711112,
+          "ci_low": -0.4509959193587856,
+          "ci_high": -0.18123851287564732,
+          "t": -4.644692667777367,
+          "df": 110,
+          "p": 9.49160619356418e-06
+        }
+      ]
+    },
+    {
+      "model": "LD vs PM accuracy ~ interrupt * task + (1|folder_id)",
+      "formula": "accuracy ~ C(interrupt, Treatment(\"rest\")) * C(task, Treatment(\"LD\"))",
+      "n_observations": 240,
+      "df": 230,
+      "r2_marginal": 0.315964960358062,
+      "r2_conditional": 0.3988808977217122,
+      "terms": [
+        {
+          "term": "Intercept",
+          "beta": 0.9805018924067433,
+          "se": 0.03139020388172179,
+          "ci_low": 0.9186527763290042,
+          "ci_high": 1.0423510084844825,
+          "t": 31.23591984624477,
+          "df": 230,
+          "p": 1.0544581656904539e-84
+        },
+        {
+          "term": "C(interrupt, Treatment(\"rest\"))[T.tiktok]",
+          "beta": -0.0001721540775606635,
+          "se": 0.04439245205518755,
+          "ci_low": -0.08764001285548714,
+          "ci_high": 0.08729570470036582,
+          "t": -0.003878003344952561,
+          "df": 230,
+          "p": 0.9969091702071208
+        },
+        {
+          "term": "C(interrupt, Treatment(\"rest\"))[T.twitter]",
+          "beta": 0.00386917677564673,
+          "se": 0.04439245205518754,
+          "ci_low": -0.08359868200227974,
+          "ci_high": 0.0913370355535732,
+          "t": 0.08715843789923275,
+          "df": 230,
+          "p": 0.9306214086795949
+        },
+        {
+          "term": "C(interrupt, Treatment(\"rest\"))[T.youtube]",
+          "beta": -0.06737872285146271,
+          "se": 0.04439245205518754,
+          "ci_low": -0.1548465816293892,
+          "ci_high": 0.02008913592646376,
+          "t": -1.517796826534818,
+          "df": 230,
+          "p": 0.13043892399550797
+        },
+        {
+          "term": "C(task, Treatment(\"LD\"))[T.PM]",
+          "beta": -0.08953730144215616,
+          "se": 0.03930118057088274,
+          "ci_low": -0.16697366624818752,
+          "ci_high": -0.012100936636124798,
+          "t": -2.278234397581738,
+          "df": 230,
+          "p": 0.02363079099034093
+        },
+        {
+          "term": "C(interrupt, Treatment(\"rest\"))[T.tiktok]:C(task, Treatment(\"LD\"))[T.PM]",
+          "beta": -0.25636020245479224,
+          "se": 0.055580262580616345,
+          "ci_low": -0.3658717597843524,
+          "ci_high": -0.14684864512523207,
+          "t": -4.612432373505879,
+          "df": 230,
+          "p": 6.6079530739970234e-06
+        },
+        {
+          "term": "C(interrupt, Treatment(\"rest\"))[T.twitter]:C(task, Treatment(\"LD\"))[T.PM]",
+          "beta": 0.02403070112423494,
+          "se": 0.05558026258061634,
+          "ci_low": -0.08548085620532521,
+          "ci_high": 0.13354225845379508,
+          "t": 0.43236033815744634,
+          "df": 230,
+          "p": 0.6658846335744877
+        },
+        {
+          "term": "C(interrupt, Treatment(\"rest\"))[T.youtube]:C(task, Treatment(\"LD\"))[T.PM]",
+          "beta": -0.007651802179058603,
+          "se": 0.05558026258061633,
+          "ci_low": -0.11716335950861874,
+          "ci_high": 0.10185975515050154,
+          "t": -0.13767121319299375,
+          "df": 230,
+          "p": 0.8906207175856211
+        }
+      ]
+    }
+  ],
+  "rt_models": [
+    {
+      "model": "LD log RT ~ interrupt * measure + (1|folder_id) + (1|stimulus)",
+      "n_trials": 18469,
+      "terms": [
+        {
+          "term": "Intercept",
+          "beta": -0.28284701871653045,
+          "ci_low": -0.3742546258593521,
+          "ci_high": -0.1914394115737088,
+          "t": -6.065209885400664,
+          "df": 18459,
+          "p": 1.3434792132034809e-09
+        },
+        {
+          "term": "interrupt[T.tiktok]",
+          "beta": 0.1011424451323297,
+          "ci_low": -0.02619048513186842,
+          "ci_high": 0.22847537539652782,
+          "t": 1.5569307058741786,
+          "df": 18459,
+          "p": 0.1195040818988666
+        },
+        {
+          "term": "interrupt[T.twitter]",
+          "beta": -0.031188186243974098,
+          "ci_low": -0.15851580007109772,
+          "ci_high": 0.09613942758314953,
+          "t": -0.48011368762582535,
+          "df": 18459,
+          "p": 0.6311522450305368
+        },
+        {
+          "term": "interrupt[T.youtube]",
+          "beta": 0.11114516810852157,
+          "ci_low": -0.016747889906312347,
+          "ci_high": 0.23903822612335549,
+          "t": 1.7034138893014106,
+          "df": 18459,
+          "p": 0.08850747311315706
+        },
+        {
+          "term": "measure[T.post]",
+          "beta": -0.011243382928567594,
+          "ci_low": -0.03741123590432789,
+          "ci_high": 0.0149244700471927,
+          "t": -0.8421810787885506,
+          "df": 18459,
+          "p": 0.39969751422865496
+        },
+        {
+          "term": "interrupt[T.tiktok]:measure[T.post]",
+          "beta": -0.0532255062526226,
+          "ci_low": -0.07339230048449294,
+          "ci_high": -0.033058712020752265,
+          "t": -5.173202784162565,
+          "df": 18459,
+          "p": 2.3252178529378783e-07
+        },
+        {
+          "term": "interrupt[T.twitter]:measure[T.post]",
+          "beta": -0.023031380116191963,
+          "ci_low": -0.043164566865560375,
+          "ci_high": -0.0028981933668235475,
+          "t": -2.242249882673862,
+          "df": 18459,
+          "p": 0.024957051481129214
+        },
+        {
+          "term": "interrupt[T.youtube]:measure[T.post]",
+          "beta": -0.006019837629413381,
+          "ci_low": -0.026561915250538318,
+          "ci_high": 0.014522239991711554,
+          "t": -0.5744033713408419,
+          "df": 18459,
+          "p": 0.5657018716404997
+        }
+      ],
+      "approximation": "log-normal LMM in place of lme4 Gamma(log) GLMM",
+      "trials_used": "correct responses only (authors' notebook, not stated in the paper)",
+      "any_significant_fixed_effect": true
+    },
+    {
+      "model": "PM log RT ~ interrupt * measure + (1|folder_id) + (1|stimulus)",
+      "n_trials": 1360,
+      "terms": [
+        {
+          "term": "Intercept",
+          "beta": 0.20409115471898107,
+          "ci_low": 0.03931560527210126,
+          "ci_high": 0.36886670416586087,
+          "t": 2.4297917207112425,
+          "df": 1350,
+          "p": 0.01523717670682246
+        },
+        {
+          "term": "interrupt[T.tiktok]",
+          "beta": -0.012904983878684969,
+          "ci_low": -0.129372520554462,
+          "ci_high": 0.10356255279709205,
+          "t": -0.21736529742594327,
+          "df": 1350,
+          "p": 0.8279565194551557
+        },
+        {
+          "term": "interrupt[T.twitter]",
+          "beta": -0.02762091212445256,
+          "ci_low": -0.14354113747013247,
+          "ci_high": 0.08829931322122736,
+          "t": -0.4674298392929252,
+          "df": 1350,
+          "p": 0.6402678163544798
+        },
+        {
+          "term": "interrupt[T.youtube]",
+          "beta": 0.00822942669404287,
+          "ci_low": -0.10814742086505519,
+          "ci_high": 0.12460627425314094,
+          "t": 0.1387204936948661,
+          "df": 1350,
+          "p": 0.8896917123302335
+        },
+        {
+          "term": "measure[T.post]",
+          "beta": -0.025894941510943136,
+          "ci_low": -0.06696064155425771,
+          "ci_high": 0.015170758532371442,
+          "t": -1.2370103612951866,
+          "df": 1350,
+          "p": 0.21629837032678637
+        },
+        {
+          "term": "interrupt[T.tiktok]:measure[T.post]",
+          "beta": -0.02691265062087351,
+          "ci_low": -0.09220290828621516,
+          "ci_high": 0.03837760704446815,
+          "t": -0.8086223193433015,
+          "df": 1350,
+          "p": 0.418874897716521
+        },
+        {
+          "term": "interrupt[T.twitter]:measure[T.post]",
+          "beta": -0.00793596665985166,
+          "ci_low": -0.06538025420648938,
+          "ci_high": 0.04950832088678606,
+          "t": -0.2710133101328891,
+          "df": 1350,
+          "p": 0.7864222263189024
+        },
+        {
+          "term": "interrupt[T.youtube]:measure[T.post]",
+          "beta": -0.08163885251600665,
+          "ci_low": -0.14123277158727449,
+          "ci_high": -0.022044933444738804,
+          "t": -2.6874016439050528,
+          "df": 1350,
+          "p": 0.0072894970306840185
+        }
+      ],
+      "approximation": "log-normal LMM in place of lme4 Gamma(log) GLMM",
+      "trials_used": "correct responses only (authors' notebook, not stated in the paper)",
+      "any_significant_fixed_effect": true
+    }
+  ],
+  "trial_level_accuracy_models": [
+    {
+      "model": "LD correct ~ interrupt * measure + (1|folder_id) + (1|stimulus)",
+      "n_trials": 19173,
+      "approximation": "variational-Bayes binomial GLMM in place of lme4 glmer",
+      "reference_cell": "tiktok / post",
+      "terms": [
+        {
+          "term": "Intercept",
+          "posterior_mean": 5.135755232866251,
+          "posterior_sd": 0.05585074436191741,
+          "z": 91.9550006278544,
+          "credible_interval_excludes_zero": true
+        },
+        {
+          "term": "interrupt[T.rest]",
+          "posterior_mean": 0.07532211772146072,
+          "posterior_sd": 0.11034604342638836,
+          "z": 0.6825991705965241,
+          "credible_interval_excludes_zero": false
+        },
+        {
+          "term": "interrupt[T.twitter]",
+          "posterior_mean": -0.059687002313582364,
+          "posterior_sd": 0.12465184921461454,
+          "z": -0.47882965788031395,
+          "credible_interval_excludes_zero": false
+        },
+        {
+          "term": "interrupt[T.youtube]",
+          "posterior_mean": -0.6903097946258446,
+          "posterior_sd": 0.10206735440975538,
+          "z": -6.763277040125439,
+          "credible_interval_excludes_zero": true
+        },
+        {
+          "term": "measure[T.pre]",
+          "posterior_mean": -0.003945826658341743,
+          "posterior_sd": 0.08226402910946026,
+          "z": -0.04796539509499879,
+          "credible_interval_excludes_zero": false
+        },
+        {
+          "term": "interrupt[T.rest]:measure[T.pre]",
+          "posterior_mean": 0.1272889028906222,
+          "posterior_sd": 0.1574742817579648,
+          "z": 0.8083155005987772,
+          "credible_interval_excludes_zero": false
+        },
+        {
+          "term": "interrupt[T.twitter]:measure[T.pre]",
+          "posterior_mean": 0.8858150782962442,
+          "posterior_sd": 0.2121893532240342,
+          "z": 4.174644320447977,
+          "credible_interval_excludes_zero": true
+        },
+        {
+          "term": "interrupt[T.youtube]:measure[T.pre]",
+          "posterior_mean": 0.19888305189950084,
+          "posterior_sd": 0.1475125316937919,
+          "z": 1.3482451261316866,
+          "credible_interval_excludes_zero": false
+        }
+      ]
+    },
+    {
+      "model": "PM correct ~ interrupt * measure + (1|folder_id) + (1|stimulus)",
+      "n_trials": 1639,
+      "approximation": "variational-Bayes binomial GLMM in place of lme4 glmer",
+      "reference_cell": "tiktok / post",
+      "terms": [
+        {
+          "term": "Intercept",
+          "posterior_mean": 0.040537470377080165,
+          "posterior_sd": 0.07738069981769512,
+          "z": 0.5238705578081398,
+          "credible_interval_excludes_zero": false
+        },
+        {
+          "term": "interrupt[T.rest]",
+          "posterior_mean": 3.2423252913697667,
+          "posterior_sd": 0.2068141199884226,
+          "z": 15.677485132791084,
+          "credible_interval_excludes_zero": true
+        },
+        {
+          "term": "interrupt[T.twitter]",
+          "posterior_mean": 3.6142985527730325,
+          "posterior_sd": 0.18978395296127606,
+          "z": 19.044279015046662,
+          "credible_interval_excludes_zero": true
+        },
+        {
+          "term": "interrupt[T.youtube]",
+          "posterior_mean": 1.885042634297093,
+          "posterior_sd": 0.14989574627686078,
+          "z": 12.57569131291676,
+          "credible_interval_excludes_zero": true
+        },
+        {
+          "term": "measure[T.pre]",
+          "posterior_mean": 1.6460797100343356,
+          "posterior_sd": 0.10783582913698692,
+          "z": 15.264682649616148,
+          "credible_interval_excludes_zero": true
+        },
+        {
+          "term": "interrupt[T.rest]:measure[T.pre]",
+          "posterior_mean": -2.2092479412200263,
+          "posterior_sd": 0.2669190125335946,
+          "z": -8.276847423680502,
+          "credible_interval_excludes_zero": true
+        },
+        {
+          "term": "interrupt[T.twitter]:measure[T.pre]",
+          "posterior_mean": -3.1559682329811993,
+          "posterior_sd": 0.21502804451544072,
+          "z": -14.677007550773572,
+          "credible_interval_excludes_zero": true
+        },
+        {
+          "term": "interrupt[T.youtube]:measure[T.pre]",
+          "posterior_mean": -1.4689862458232956,
+          "posterior_sd": 0.21540013531474525,
+          "z": -6.819801870954238,
+          "credible_interval_excludes_zero": true
+        }
+      ]
+    }
+  ],
+  "ddm_source": "supplied: /tmp/mpm-data/ddm.csv",
+  "table1": [
+    {
+      "task": "PM",
+      "parameter": "drift",
+      "effect": "interrupt",
+      "method": "ART",
+      "shapiro_p": 0.00015486235155794028,
+      "df1": 3,
+      "df2": 56,
+      "F": 4.078378970154928,
+      "p": 0.010878887255287543,
+      "effect_size": 0.13338800676320908,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "PM",
+      "parameter": "drift",
+      "effect": "measure",
+      "method": "ART",
+      "shapiro_p": 0.00015486235155794028,
+      "df1": 1,
+      "df2": 56,
+      "F": 2.4197126996675524,
+      "p": 0.12545081832812227,
+      "effect_size": 0.023114935535594537,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "PM",
+      "parameter": "drift",
+      "effect": "interaction",
+      "method": "ART",
+      "shapiro_p": 0.00015486235155794028,
+      "df1": 3,
+      "df2": 56,
+      "F": 6.466313803910754,
+      "p": 0.00077668307382325,
+      "effect_size": 0.21464880414185877,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "PM",
+      "parameter": "noise",
+      "effect": "interrupt",
+      "method": "ART",
+      "shapiro_p": 0.009886982744326638,
+      "df1": 3,
+      "df2": 56,
+      "F": 4.232688213966396,
+      "p": 0.009118644784235796,
+      "effect_size": 0.13914395889938627,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "PM",
+      "parameter": "noise",
+      "effect": "measure",
+      "method": "ART",
+      "shapiro_p": 0.009886982744326638,
+      "df1": 1,
+      "df2": 56,
+      "F": 12.592673429823,
+      "p": 0.0007921830235921868,
+      "effect_size": 0.1619254160299858,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "PM",
+      "parameter": "noise",
+      "effect": "interaction",
+      "method": "ART",
+      "shapiro_p": 0.009886982744326638,
+      "df1": 3,
+      "df2": 56,
+      "F": 4.712466830753608,
+      "p": 0.005294134820219435,
+      "effect_size": 0.15656181439287317,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "PM",
+      "parameter": "bound",
+      "effect": "interrupt",
+      "method": "ART",
+      "shapiro_p": 1.4254286119688755e-07,
+      "df1": 3,
+      "df2": 56,
+      "F": 3.2208160570881845,
+      "p": 0.029400455179274025,
+      "effect_size": 0.09994304670821348,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "PM",
+      "parameter": "bound",
+      "effect": "measure",
+      "method": "ART",
+      "shapiro_p": 1.4254286119688755e-07,
+      "df1": 1,
+      "df2": 56,
+      "F": 0.02394280350048264,
+      "p": 0.877586883610985,
+      "effect_size": -0.016536631579306002,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "PM",
+      "parameter": "bound",
+      "effect": "interaction",
+      "method": "ART",
+      "shapiro_p": 1.4254286119688755e-07,
+      "df1": 3,
+      "df2": 56,
+      "F": 2.233239412564345,
+      "p": 0.09435750938679446,
+      "effect_size": 0.058080606006571014,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "PM",
+      "parameter": "nondectime",
+      "effect": "interrupt",
+      "method": "ART",
+      "shapiro_p": 0.00012177394927828092,
+      "df1": 3,
+      "df2": 56,
+      "F": 1.6947155543831869,
+      "p": 0.178563953017411,
+      "effect_size": 0.03356970781055479,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "PM",
+      "parameter": "nondectime",
+      "effect": "measure",
+      "method": "ART",
+      "shapiro_p": 0.00012177394927828092,
+      "df1": 1,
+      "df2": 56,
+      "F": 15.8513386067777,
+      "p": 0.0001994363640914893,
+      "effect_size": 0.19841112908878464,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "PM",
+      "parameter": "nondectime",
+      "effect": "interaction",
+      "method": "ART",
+      "shapiro_p": 0.00012177394927828092,
+      "df1": 3,
+      "df2": 56,
+      "F": 2.6923844612694556,
+      "p": 0.054765574887909556,
+      "effect_size": 0.07801744728852257,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "LD",
+      "parameter": "drift",
+      "effect": "interrupt",
+      "method": "mixed ANOVA",
+      "shapiro_p": 0.27757168692449263,
+      "df1": 3,
+      "df2": 56,
+      "F": 2.5199474174699383,
+      "p": 0.0671637506143368,
+      "effect_size": 0.11894054460343141,
+      "effect_size_kind": "partial eta^2"
+    },
+    {
+      "task": "LD",
+      "parameter": "drift",
+      "effect": "measure",
+      "method": "mixed ANOVA",
+      "shapiro_p": 0.27757168692449263,
+      "df1": 1,
+      "df2": 56,
+      "F": 1.0331607217004641,
+      "p": 0.313788957976431,
+      "effect_size": 0.018115087935278298,
+      "effect_size_kind": "partial eta^2"
+    },
+    {
+      "task": "LD",
+      "parameter": "drift",
+      "effect": "interaction",
+      "method": "mixed ANOVA",
+      "shapiro_p": 0.27757168692449263,
+      "df1": 3,
+      "df2": 56,
+      "F": 0.7846401343835908,
+      "p": 0.5075284921341353,
+      "effect_size": 0.04033868481994355,
+      "effect_size_kind": "partial eta^2"
+    },
+    {
+      "task": "LD",
+      "parameter": "noise",
+      "effect": "interrupt",
+      "method": "ART",
+      "shapiro_p": 0.024496475920193505,
+      "df1": 3,
+      "df2": 56,
+      "F": 1.6145905252998962,
+      "p": 0.19624429987053507,
+      "effect_size": 0.02981337536370761,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "LD",
+      "parameter": "noise",
+      "effect": "measure",
+      "method": "ART",
+      "shapiro_p": 0.024496475920193505,
+      "df1": 1,
+      "df2": 56,
+      "F": 1.5909277672775088,
+      "p": 0.2124227453172553,
+      "effect_size": 0.009752743340507866,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "LD",
+      "parameter": "noise",
+      "effect": "interaction",
+      "method": "ART",
+      "shapiro_p": 0.024496475920193505,
+      "df1": 3,
+      "df2": 56,
+      "F": 0.6970970223140773,
+      "p": 0.5577349328687349,
+      "effect_size": -0.015378051767870953,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "LD",
+      "parameter": "bound",
+      "effect": "interrupt",
+      "method": "ART",
+      "shapiro_p": 2.2684025167636912e-07,
+      "df1": 3,
+      "df2": 56,
+      "F": 1.8118738843076598,
+      "p": 0.15548577967797134,
+      "effect_size": 0.03901012896872395,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "LD",
+      "parameter": "bound",
+      "effect": "measure",
+      "method": "ART",
+      "shapiro_p": 2.2684025167636912e-07,
+      "df1": 1,
+      "df2": 56,
+      "F": 0.06893595727750808,
+      "p": 0.7938558779684721,
+      "effect_size": -0.01576232968536792,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "LD",
+      "parameter": "bound",
+      "effect": "interaction",
+      "method": "ART",
+      "shapiro_p": 2.2684025167636912e-07,
+      "df1": 3,
+      "df2": 56,
+      "F": 0.39848866987159043,
+      "p": 0.7545997955393463,
+      "effect_size": -0.031008154313724244,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "LD",
+      "parameter": "nondectime",
+      "effect": "interrupt",
+      "method": "ART",
+      "shapiro_p": 7.412481280807246e-09,
+      "df1": 3,
+      "df2": 56,
+      "F": 1.5168034332042866,
+      "p": 0.22013733721452147,
+      "effect_size": 0.025189276433184256,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "LD",
+      "parameter": "nondectime",
+      "effect": "measure",
+      "method": "ART",
+      "shapiro_p": 7.412481280807246e-09,
+      "df1": 1,
+      "df2": 56,
+      "F": 0.6074471212881134,
+      "p": 0.439032083025611,
+      "effect_size": -0.0065856348102465686,
+      "effect_size_kind": "partial omega^2"
+    },
+    {
+      "task": "LD",
+      "parameter": "nondectime",
+      "effect": "interaction",
+      "method": "ART",
+      "shapiro_p": 7.412481280807246e-09,
+      "df1": 3,
+      "df2": 56,
+      "F": 0.6360988655521843,
+      "p": 0.5948906186923375,
+      "effect_size": -0.01853225210055401,
+      "effect_size_kind": "partial omega^2"
+    }
+  ],
+  "posthoc_pm": [
+    {
+      "parameter": "drift",
+      "contrast": "rest: pre vs post",
+      "kind": "within",
+      "t": -1.6356293457052287,
+      "df": 14,
+      "p_raw": 0.12419269829188291,
+      "p_holm": 0.7451561897512975
+    },
+    {
+      "parameter": "drift",
+      "contrast": "tiktok: pre vs post",
+      "kind": "within",
+      "t": 3.7977722569675945,
+      "df": 14,
+      "p_raw": 0.0019594092658055387,
+      "p_holm": 0.01959409265805539
+    },
+    {
+      "parameter": "drift",
+      "contrast": "twitter: pre vs post",
+      "kind": "within",
+      "t": -1.4453243132268265,
+      "df": 14,
+      "p_raw": 0.1703778988787536,
+      "p_holm": 0.851889494393768
+    },
+    {
+      "parameter": "drift",
+      "contrast": "youtube: pre vs post",
+      "kind": "within",
+      "t": -0.7274644016000815,
+      "df": 14,
+      "p_raw": 0.47893142374888553,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "drift",
+      "contrast": "rest vs tiktok (post)",
+      "kind": "between",
+      "t": 2.2465877558256664,
+      "df": 28,
+      "p_raw": 0.03273665091301521,
+      "p_holm": 0.2618932073041217
+    },
+    {
+      "parameter": "drift",
+      "contrast": "rest vs twitter (post)",
+      "kind": "between",
+      "t": -0.06385581576759038,
+      "df": 28,
+      "p_raw": 0.949538735732842,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "drift",
+      "contrast": "rest vs youtube (post)",
+      "kind": "between",
+      "t": 0.2599313129425983,
+      "df": 28,
+      "p_raw": 0.796818612929929,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "drift",
+      "contrast": "tiktok vs twitter (post)",
+      "kind": "between",
+      "t": -2.53891921892443,
+      "df": 28,
+      "p_raw": 0.016960119944446652,
+      "p_holm": 0.15264107950001987
+    },
+    {
+      "parameter": "drift",
+      "contrast": "tiktok vs youtube (post)",
+      "kind": "between",
+      "t": -1.7372984927562314,
+      "df": 28,
+      "p_raw": 0.09332458310079315,
+      "p_holm": 0.6532720817055521
+    },
+    {
+      "parameter": "drift",
+      "contrast": "twitter vs youtube (post)",
+      "kind": "between",
+      "t": 0.3338390537057228,
+      "df": 28,
+      "p_raw": 0.7409884222782297,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "noise",
+      "contrast": "rest: pre vs post",
+      "kind": "within",
+      "t": 0.6408403570249838,
+      "df": 14,
+      "p_raw": 0.5319769124085367,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "noise",
+      "contrast": "tiktok: pre vs post",
+      "kind": "within",
+      "t": -3.502420183017428,
+      "df": 14,
+      "p_raw": 0.0035182460159015865,
+      "p_holm": 0.03518246015901587
+    },
+    {
+      "parameter": "noise",
+      "contrast": "twitter: pre vs post",
+      "kind": "within",
+      "t": 2.3704312099600426,
+      "df": 14,
+      "p_raw": 0.03266495615244006,
+      "p_holm": 0.27632504604970953
+    },
+    {
+      "parameter": "noise",
+      "contrast": "youtube: pre vs post",
+      "kind": "within",
+      "t": 1.177321990750325,
+      "df": 14,
+      "p_raw": 0.25869498930343116,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "noise",
+      "contrast": "rest vs tiktok (post)",
+      "kind": "between",
+      "t": -1.593538600950791,
+      "df": 28,
+      "p_raw": 0.12226697751242478,
+      "p_holm": 0.7336018650745487
+    },
+    {
+      "parameter": "noise",
+      "contrast": "rest vs twitter (post)",
+      "kind": "between",
+      "t": 0.4875366549163204,
+      "df": 28,
+      "p_raw": 0.62967365450646,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "noise",
+      "contrast": "rest vs youtube (post)",
+      "kind": "between",
+      "t": 0.12661920473269342,
+      "df": 28,
+      "p_raw": 0.9001466909375084,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "noise",
+      "contrast": "tiktok vs twitter (post)",
+      "kind": "between",
+      "t": 2.27585754795685,
+      "df": 28,
+      "p_raw": 0.030702782894412167,
+      "p_holm": 0.27632504604970953
+    },
+    {
+      "parameter": "noise",
+      "contrast": "tiktok vs youtube (post)",
+      "kind": "between",
+      "t": 1.782351743329867,
+      "df": 28,
+      "p_raw": 0.08553996485268259,
+      "p_holm": 0.5987797539687781
+    },
+    {
+      "parameter": "noise",
+      "contrast": "twitter vs youtube (post)",
+      "kind": "between",
+      "t": -0.3661085875936954,
+      "df": 28,
+      "p_raw": 0.7170358158330798,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "bound",
+      "contrast": "rest: pre vs post",
+      "kind": "within",
+      "t": -2.748972348049245,
+      "df": 14,
+      "p_raw": 0.01567658312070756,
+      "p_holm": 0.1567658312070756
+    },
+    {
+      "parameter": "bound",
+      "contrast": "tiktok: pre vs post",
+      "kind": "within",
+      "t": 1.2231663878494863,
+      "df": 14,
+      "p_raw": 0.24145721557002442,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "bound",
+      "contrast": "twitter: pre vs post",
+      "kind": "within",
+      "t": -0.18633929102309732,
+      "df": 14,
+      "p_raw": 0.8548518022647636,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "bound",
+      "contrast": "youtube: pre vs post",
+      "kind": "within",
+      "t": 0.5859543161033063,
+      "df": 14,
+      "p_raw": 0.5672333485056172,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "bound",
+      "contrast": "rest vs tiktok (post)",
+      "kind": "between",
+      "t": 2.1267944846416587,
+      "df": 28,
+      "p_raw": 0.042385038969759384,
+      "p_holm": 0.38146535072783444
+    },
+    {
+      "parameter": "bound",
+      "contrast": "rest vs twitter (post)",
+      "kind": "between",
+      "t": 0.9301046612723578,
+      "df": 28,
+      "p_raw": 0.36026705365131756,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "bound",
+      "contrast": "rest vs youtube (post)",
+      "kind": "between",
+      "t": 1.9623923206257792,
+      "df": 28,
+      "p_raw": 0.05972409508634927,
+      "p_holm": 0.4777927606907942
+    },
+    {
+      "parameter": "bound",
+      "contrast": "tiktok vs twitter (post)",
+      "kind": "between",
+      "t": -0.8816519421361395,
+      "df": 28,
+      "p_raw": 0.3854711250053172,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "bound",
+      "contrast": "tiktok vs youtube (post)",
+      "kind": "between",
+      "t": -0.15401476845325135,
+      "df": 28,
+      "p_raw": 0.8787028177719505,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "bound",
+      "contrast": "twitter vs youtube (post)",
+      "kind": "between",
+      "t": 0.7418577116361619,
+      "df": 28,
+      "p_raw": 0.4643513229873915,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "nondectime",
+      "contrast": "rest: pre vs post",
+      "kind": "within",
+      "t": 0.8733555140724972,
+      "df": 14,
+      "p_raw": 0.3972026099608098,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "nondectime",
+      "contrast": "tiktok: pre vs post",
+      "kind": "within",
+      "t": -3.103071064777843,
+      "df": 14,
+      "p_raw": 0.007784758625397244,
+      "p_holm": 0.07784758625397244
+    },
+    {
+      "parameter": "nondectime",
+      "contrast": "twitter: pre vs post",
+      "kind": "within",
+      "t": -1.061218691105306,
+      "df": 14,
+      "p_raw": 0.30655540815075766,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "nondectime",
+      "contrast": "youtube: pre vs post",
+      "kind": "within",
+      "t": 0.9285009073348255,
+      "df": 14,
+      "p_raw": 0.3688804429837906,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "nondectime",
+      "contrast": "rest vs tiktok (post)",
+      "kind": "between",
+      "t": -1.0410810767088623,
+      "df": 28,
+      "p_raw": 0.3067443467087399,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "nondectime",
+      "contrast": "rest vs twitter (post)",
+      "kind": "between",
+      "t": -0.19928659799532503,
+      "df": 28,
+      "p_raw": 0.8434787118661966,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "nondectime",
+      "contrast": "rest vs youtube (post)",
+      "kind": "between",
+      "t": 0.14419284526938206,
+      "df": 28,
+      "p_raw": 0.8863810278476518,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "nondectime",
+      "contrast": "tiktok vs twitter (post)",
+      "kind": "between",
+      "t": 0.9557738441689801,
+      "df": 28,
+      "p_raw": 0.3473662869504,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "nondectime",
+      "contrast": "tiktok vs youtube (post)",
+      "kind": "between",
+      "t": 1.3769716610787648,
+      "df": 28,
+      "p_raw": 0.17943127809733686,
+      "p_holm": 1.0
+    },
+    {
+      "parameter": "nondectime",
+      "contrast": "twitter vs youtube (post)",
+      "kind": "between",
+      "t": 0.38642886341763855,
+      "df": 28,
+      "p_raw": 0.7021001253669634,
+      "p_holm": 1.0
+    }
+  ],
+  "figure6": {
+    "pre": {
+      "drift": 0.4388426267022439,
+      "noise": 0.5673180312252734,
+      "bound": 0.5777137376820124,
+      "nondectime": 0.4650302812894466,
+      "loss": 457.1557580990578,
+      "n_trials": 205,
+      "accuracy": 0.8
+    },
+    "post": {
+      "drift": 0.0,
+      "noise": 2.328718292709964,
+      "bound": 1.6982816775745426,
+      "nondectime": 0.6804976130952057,
+      "loss": 461.47087771247374,
+      "n_trials": 204,
+      "accuracy": 0.49019607843137253
+    }
+  },
+  "questionnaires": [
+    {
+      "scale": "ENGAGE",
+      "F": 2.5921501706484644,
+      "df1": 3,
+      "df2": 56,
+      "p": 0.06166006473006741,
+      "np2": 0.12193294624461509,
+      "BF10": 1.1292097076371048,
+      "BF01": 0.8855751002110327
+    },
+    {
+      "scale": "SUQ",
+      "F": 2.2669819028407407,
+      "df1": 3,
+      "df2": 56,
+      "p": 0.09065478359277164,
+      "np2": 0.10829368302967003,
+      "BF10": 0.8243244632414332,
+      "BF01": 1.2131145496613922
+    },
+    {
+      "scale": "BSMARS",
+      "F": 1.0652634125688016,
+      "df1": 3,
+      "df2": 56,
+      "p": 0.37122459662661444,
+      "np2": 0.0539867822504506,
+      "BF10": 0.25621255798355425,
+      "BF01": 3.903009313322526
+    }
+  ],
+  "undocumented_questionnaire_columns": [
+    "META_CC",
+    "META_POS",
+    "META_CSC",
+    "META_NEG",
+    "META_NC"
+  ],
+  "figures": [
+    "results/fig3_rt_ld.png",
+    "results/fig3_rt_pm.png",
+    "results/fig4_accuracy.png",
+    "results/fig5_ddm_pm.png",
+    "results/fig6_ddm_tiktok.png"
+  ],
+  "comparisons": [
+    {
+      "quantity": "participants",
+      "citation": "Section 3.1, 3.2, 3.4",
+      "reported": 60,
+      "observed": 60,
+      "delta": 0,
+      "tolerance": 0,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "PM cue trials per participant per block",
+      "citation": "Section 3.1, 3.2, 3.4",
+      "reported": 16,
+      "observed": 14.0,
+      "delta": -2.0,
+      "tolerance": 0.5,
+      "status": "MISMATCH",
+      "notes": "counted as trials whose stimulus is one of the three PM cue words"
+    },
+    {
+      "quantity": "shortest non-cue stimulus (letters)",
+      "citation": "Section 3.2, 'a word length ranging from six to eight letters'",
+      "reported": 6,
+      "observed": 4,
+      "delta": -2,
+      "tolerance": 0,
+      "status": "MISMATCH",
+      "notes": "44.7% of non-cue trials use strings outside 6-8 letters"
+    },
+    {
+      "quantity": "lmm_ld: conditional R2",
+      "citation": "Section 4.1.1, Lexical Decision Task",
+      "reported": 0.67,
+      "observed": 0.99,
+      "delta": 0.31999999999999995,
+      "tolerance": 0.01,
+      "status": "MISMATCH",
+      "notes": "paper quotes a single R2 without saying marginal or conditional"
+    },
+    {
+      "quantity": "lmm_ld: t degrees of freedom",
+      "citation": "Section 4.1.1, Lexical Decision Task",
+      "reported": 114,
+      "observed": 114,
+      "delta": 0,
+      "tolerance": 0,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_ld: beta[rest]",
+      "citation": "Section 4.1.1, Lexical Decision Task",
+      "reported": -0.001,
+      "observed": -0.001,
+      "delta": 0.0,
+      "tolerance": 0.006,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_ld: t[rest]",
+      "citation": "Section 4.1.1, Lexical Decision Task",
+      "reported": -0.03,
+      "observed": -0.03,
+      "delta": 0.0,
+      "tolerance": 0.05,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_ld: beta[twitter]",
+      "citation": "Section 4.1.1, Lexical Decision Task",
+      "reported": 0.005,
+      "observed": 0.005,
+      "delta": 0.0,
+      "tolerance": 0.006,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_ld: t[twitter]",
+      "citation": "Section 4.1.1, Lexical Decision Task",
+      "reported": 0.11,
+      "observed": 0.11,
+      "delta": 0.0,
+      "tolerance": 0.05,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_ld: beta[youtube]",
+      "citation": "Section 4.1.1, Lexical Decision Task",
+      "reported": -0.07,
+      "observed": -0.067,
+      "delta": 0.0030000000000000027,
+      "tolerance": 0.006,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_ld: t[youtube]",
+      "citation": "Section 4.1.1, Lexical Decision Task",
+      "reported": -1.47,
+      "observed": -1.47,
+      "delta": 0.0,
+      "tolerance": 0.05,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_pm: conditional R2",
+      "citation": "Section 4.1.1, Prospective Memory Task",
+      "reported": 0.67,
+      "observed": 0.67,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "paper quotes a single R2 without saying marginal or conditional"
+    },
+    {
+      "quantity": "lmm_pm: t degrees of freedom",
+      "citation": "Section 4.1.1, Prospective Memory Task",
+      "reported": 110,
+      "observed": 110,
+      "delta": 0,
+      "tolerance": 0,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_pm: beta[rest]",
+      "citation": "Section 4.1.1, Prospective Memory Task",
+      "reported": 0.46,
+      "observed": 0.456,
+      "delta": -0.0040000000000000036,
+      "tolerance": 0.006,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_pm: t[rest]",
+      "citation": "Section 4.1.1, Prospective Memory Task",
+      "reported": 7.25,
+      "observed": 7.25,
+      "delta": 0.0,
+      "tolerance": 0.05,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_pm: beta[twitter]",
+      "citation": "Section 4.1.1, Prospective Memory Task",
+      "reported": 0.49,
+      "observed": 0.489,
+      "delta": -0.0010000000000000009,
+      "tolerance": 0.006,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_pm: t[twitter]",
+      "citation": "Section 4.1.1, Prospective Memory Task",
+      "reported": 7.77,
+      "observed": 7.77,
+      "delta": 0.0,
+      "tolerance": 0.05,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_pm: beta[youtube]",
+      "citation": "Section 4.1.1, Prospective Memory Task",
+      "reported": 0.34,
+      "observed": 0.342,
+      "delta": 0.0020000000000000018,
+      "tolerance": 0.006,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_pm: t[youtube]",
+      "citation": "Section 4.1.1, Prospective Memory Task",
+      "reported": 5.42,
+      "observed": 5.42,
+      "delta": 0.0,
+      "tolerance": 0.05,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_pm: beta[pre]",
+      "citation": "Section 4.1.1, Prospective Memory Task",
+      "reported": 0.31,
+      "observed": 0.314,
+      "delta": 0.0040000000000000036,
+      "tolerance": 0.006,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_pm: t[pre]",
+      "citation": "Section 4.1.1, Prospective Memory Task",
+      "reported": 6.7,
+      "observed": 6.7,
+      "delta": 0.0,
+      "tolerance": 0.05,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_ld_vs_pm: conditional R2",
+      "citation": "Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",
+      "reported": 0.38,
+      "observed": 0.38,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "paper quotes a single R2 without saying marginal or conditional"
+    },
+    {
+      "quantity": "lmm_ld_vs_pm: t degrees of freedom",
+      "citation": "Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",
+      "reported": 230,
+      "observed": 230,
+      "delta": 0,
+      "tolerance": 0,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_ld_vs_pm: beta[tiktok:PM]",
+      "citation": "Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",
+      "reported": -0.28,
+      "observed": -0.277,
+      "delta": 0.0030000000000000027,
+      "tolerance": 0.006,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_ld_vs_pm: t[tiktok:PM]",
+      "citation": "Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",
+      "reported": -5.01,
+      "observed": -5.01,
+      "delta": 0.0,
+      "tolerance": 0.05,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_ld_vs_pm: beta[twitter:PM]",
+      "citation": "Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",
+      "reported": -0.005,
+      "observed": -0.005,
+      "delta": 0.0,
+      "tolerance": 0.006,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_ld_vs_pm: t[twitter:PM]",
+      "citation": "Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",
+      "reported": -0.1,
+      "observed": -0.1,
+      "delta": 0.0,
+      "tolerance": 0.05,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_ld_vs_pm: beta[youtube:PM]",
+      "citation": "Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",
+      "reported": -0.03,
+      "observed": -0.025,
+      "delta": 0.0049999999999999975,
+      "tolerance": 0.006,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "lmm_ld_vs_pm: t[youtube:PM]",
+      "citation": "Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",
+      "reported": -0.46,
+      "observed": -0.46,
+      "delta": 0.0,
+      "tolerance": 0.05,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "Section 4.1.2: significant fixed effects in LD RT model",
+      "citation": "Section 4.1.2",
+      "reported": 0,
+      "observed": 1,
+      "delta": 1,
+      "tolerance": 0,
+      "status": "MISMATCH",
+      "notes": "paper reports none; found: ['interrupt[T.tiktok]:measure[T.post]', 'interrupt[T.twitter]:measure[T.post]']"
+    },
+    {
+      "quantity": "Section 4.1.2: significant fixed effects in PM RT model",
+      "citation": "Section 4.1.2",
+      "reported": 0,
+      "observed": 1,
+      "delta": 1,
+      "tolerance": 0,
+      "status": "MISMATCH",
+      "notes": "paper reports none; found: ['interrupt[T.youtube]:measure[T.post]']"
+    },
+    {
+      "quantity": "Table 1 F[PM/drift/interrupt]",
+      "citation": "Table 1",
+      "reported": 4.078,
+      "observed": 4.078,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[PM/drift/interrupt]",
+      "citation": "Table 1",
+      "reported": 0.133,
+      "observed": 0.133,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[PM/drift/measure]",
+      "citation": "Table 1",
+      "reported": 2.42,
+      "observed": 2.42,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[PM/drift/measure]",
+      "citation": "Table 1",
+      "reported": 0.024,
+      "observed": 0.023,
+      "delta": -0.0010000000000000009,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[PM/drift/interaction]",
+      "citation": "Table 1",
+      "reported": 6.466,
+      "observed": 6.466,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[PM/drift/interaction]",
+      "citation": "Table 1",
+      "reported": 0.215,
+      "observed": 0.215,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[PM/noise/interrupt]",
+      "citation": "Table 1",
+      "reported": 4.233,
+      "observed": 4.233,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[PM/noise/interrupt]",
+      "citation": "Table 1",
+      "reported": 0.139,
+      "observed": 0.139,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[PM/noise/measure]",
+      "citation": "Table 1",
+      "reported": 12.593,
+      "observed": 12.593,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[PM/noise/measure]",
+      "citation": "Table 1",
+      "reported": 0.167,
+      "observed": 0.162,
+      "delta": -0.0050000000000000044,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[PM/noise/interaction]",
+      "citation": "Table 1",
+      "reported": 4.712,
+      "observed": 4.712,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[PM/noise/interaction]",
+      "citation": "Table 1",
+      "reported": 0.157,
+      "observed": 0.157,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[PM/bound/interrupt]",
+      "citation": "Table 1",
+      "reported": 3.02,
+      "observed": 3.221,
+      "delta": 0.20100000000000007,
+      "tolerance": 0.01,
+      "status": "MISMATCH",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[PM/bound/interrupt]",
+      "citation": "Table 1",
+      "reported": 0.092,
+      "observed": 0.1,
+      "delta": 0.008000000000000007,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[PM/bound/measure]",
+      "citation": "Table 1",
+      "reported": 0.025,
+      "observed": 0.024,
+      "delta": -0.0010000000000000009,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[PM/bound/measure]",
+      "citation": "Table 1",
+      "reported": -0.017,
+      "observed": -0.017,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[PM/bound/interaction]",
+      "citation": "Table 1",
+      "reported": 2.385,
+      "observed": 2.233,
+      "delta": -0.1519999999999997,
+      "tolerance": 0.01,
+      "status": "MISMATCH",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[PM/bound/interaction]",
+      "citation": "Table 1",
+      "reported": 0.065,
+      "observed": 0.058,
+      "delta": -0.006999999999999999,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[PM/nondectime/interrupt]",
+      "citation": "Table 1",
+      "reported": 1.695,
+      "observed": 1.695,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[PM/nondectime/interrupt]",
+      "citation": "Table 1",
+      "reported": 0.034,
+      "observed": 0.034,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[PM/nondectime/measure]",
+      "citation": "Table 1",
+      "reported": 15.851,
+      "observed": 15.851,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[PM/nondectime/measure]",
+      "citation": "Table 1",
+      "reported": 0.204,
+      "observed": 0.198,
+      "delta": -0.005999999999999978,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[PM/nondectime/interaction]",
+      "citation": "Table 1",
+      "reported": 2.692,
+      "observed": 2.692,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[PM/nondectime/interaction]",
+      "citation": "Table 1",
+      "reported": 0.078,
+      "observed": 0.078,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[LD/drift/interrupt]",
+      "citation": "Table 1",
+      "reported": 2.52,
+      "observed": 2.52,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "mixed ANOVA"
+    },
+    {
+      "quantity": "Table 1 effect size[LD/drift/interrupt]",
+      "citation": "Table 1",
+      "reported": 0.119,
+      "observed": 0.119,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial eta^2"
+    },
+    {
+      "quantity": "Table 1 F[LD/drift/measure]",
+      "citation": "Table 1",
+      "reported": 1.033,
+      "observed": 1.033,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "mixed ANOVA"
+    },
+    {
+      "quantity": "Table 1 effect size[LD/drift/measure]",
+      "citation": "Table 1",
+      "reported": 0.018,
+      "observed": 0.018,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial eta^2"
+    },
+    {
+      "quantity": "Table 1 F[LD/drift/interaction]",
+      "citation": "Table 1",
+      "reported": 0.785,
+      "observed": 0.785,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "mixed ANOVA"
+    },
+    {
+      "quantity": "Table 1 effect size[LD/drift/interaction]",
+      "citation": "Table 1",
+      "reported": 0.04,
+      "observed": 0.04,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial eta^2"
+    },
+    {
+      "quantity": "Table 1 F[LD/noise/interrupt]",
+      "citation": "Table 1",
+      "reported": 1.615,
+      "observed": 1.615,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[LD/noise/interrupt]",
+      "citation": "Table 1",
+      "reported": 0.03,
+      "observed": 0.03,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[LD/noise/measure]",
+      "citation": "Table 1",
+      "reported": 1.591,
+      "observed": 1.591,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[LD/noise/measure]",
+      "citation": "Table 1",
+      "reported": 0.01,
+      "observed": 0.01,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[LD/noise/interaction]",
+      "citation": "Table 1",
+      "reported": 0.697,
+      "observed": 0.697,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[LD/noise/interaction]",
+      "citation": "Table 1",
+      "reported": -0.015,
+      "observed": -0.015,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[LD/bound/interrupt]",
+      "citation": "Table 1",
+      "reported": 1.812,
+      "observed": 1.812,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[LD/bound/interrupt]",
+      "citation": "Table 1",
+      "reported": 0.039,
+      "observed": 0.039,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[LD/bound/measure]",
+      "citation": "Table 1",
+      "reported": 0.069,
+      "observed": 0.069,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[LD/bound/measure]",
+      "citation": "Table 1",
+      "reported": -0.016,
+      "observed": -0.016,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[LD/bound/interaction]",
+      "citation": "Table 1",
+      "reported": 0.398,
+      "observed": 0.398,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[LD/bound/interaction]",
+      "citation": "Table 1",
+      "reported": -0.031,
+      "observed": -0.031,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[LD/nondectime/interrupt]",
+      "citation": "Table 1",
+      "reported": 1.517,
+      "observed": 1.517,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[LD/nondectime/interrupt]",
+      "citation": "Table 1",
+      "reported": 0.025,
+      "observed": 0.025,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[LD/nondectime/measure]",
+      "citation": "Table 1",
+      "reported": 0.607,
+      "observed": 0.607,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[LD/nondectime/measure]",
+      "citation": "Table 1",
+      "reported": -0.007,
+      "observed": -0.007,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Table 1 F[LD/nondectime/interaction]",
+      "citation": "Table 1",
+      "reported": 0.636,
+      "observed": 0.636,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "ART"
+    },
+    {
+      "quantity": "Table 1 effect size[LD/nondectime/interaction]",
+      "citation": "Table 1",
+      "reported": -0.019,
+      "observed": -0.019,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "partial omega^2"
+    },
+    {
+      "quantity": "Fig 6 pre accuracy %",
+      "citation": "Section 4.1.3 and Figure 6",
+      "reported": 80.0,
+      "observed": 80.0,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "Fig 6 pre drift",
+      "citation": "Section 4.1.3 and Figure 6",
+      "reported": 1.46,
+      "observed": 0.44,
+      "delta": -1.02,
+      "tolerance": 0.05,
+      "status": "MISMATCH",
+      "notes": "differential evolution is unseeded"
+    },
+    {
+      "quantity": "Fig 6 pre noise",
+      "citation": "Section 4.1.3 and Figure 6",
+      "reported": 1.89,
+      "observed": 0.57,
+      "delta": -1.3199999999999998,
+      "tolerance": 0.05,
+      "status": "MISMATCH",
+      "notes": "differential evolution is unseeded"
+    },
+    {
+      "quantity": "Fig 6 pre bound",
+      "citation": "Section 4.1.3 and Figure 6",
+      "reported": 1.94,
+      "observed": 0.58,
+      "delta": -1.3599999999999999,
+      "tolerance": 0.05,
+      "status": "MISMATCH",
+      "notes": "differential evolution is unseeded"
+    },
+    {
+      "quantity": "Fig 6 pre non-decision time (ms)",
+      "citation": "Section 4.1.3 and Figure 6",
+      "reported": 461,
+      "observed": 465,
+      "delta": 4,
+      "tolerance": 2,
+      "status": "MISMATCH",
+      "notes": ""
+    },
+    {
+      "quantity": "Fig 6 pre fit loss",
+      "citation": "Section 4.1.3 and Figure 6",
+      "reported": 457.13,
+      "observed": 457.16,
+      "delta": 0.03000000000002956,
+      "tolerance": 0.2,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "Fig 6 post accuracy %",
+      "citation": "Section 4.1.3 and Figure 6",
+      "reported": 49.02,
+      "observed": 49.02,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "Fig 6 post drift",
+      "citation": "Section 4.1.3 and Figure 6",
+      "reported": 0.0,
+      "observed": 0.0,
+      "delta": 0.0,
+      "tolerance": 0.05,
+      "status": "match",
+      "notes": "differential evolution is unseeded"
+    },
+    {
+      "quantity": "Fig 6 post noise",
+      "citation": "Section 4.1.3 and Figure 6",
+      "reported": 2.35,
+      "observed": 2.33,
+      "delta": -0.020000000000000018,
+      "tolerance": 0.05,
+      "status": "match",
+      "notes": "differential evolution is unseeded"
+    },
+    {
+      "quantity": "Fig 6 post bound",
+      "citation": "Section 4.1.3 and Figure 6",
+      "reported": 1.71,
+      "observed": 1.7,
+      "delta": -0.010000000000000009,
+      "tolerance": 0.05,
+      "status": "match",
+      "notes": "differential evolution is unseeded"
+    },
+    {
+      "quantity": "Fig 6 post non-decision time (ms)",
+      "citation": "Section 4.1.3 and Figure 6",
+      "reported": 681,
+      "observed": 680,
+      "delta": -1,
+      "tolerance": 2,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "Fig 6 post fit loss",
+      "citation": "Section 4.1.3 and Figure 6",
+      "reported": 461.46,
+      "observed": 461.47,
+      "delta": 0.010000000000047748,
+      "tolerance": 0.2,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "ENGAGE F",
+      "citation": "Section 4.2",
+      "reported": 2.59,
+      "observed": 2.592,
+      "delta": 0.002000000000000224,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "ENGAGE p",
+      "citation": "Section 4.2",
+      "reported": 0.062,
+      "observed": 0.062,
+      "delta": 0.0,
+      "tolerance": 0.001,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "ENGAGE BF01",
+      "citation": "Section 4.2",
+      "reported": 0.893,
+      "observed": 0.886,
+      "delta": -0.007000000000000006,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "BayesFactor's anovaBF is Monte Carlo; this is quadrature"
+    },
+    {
+      "quantity": "SUQ F",
+      "citation": "Section 4.2",
+      "reported": 2.267,
+      "observed": 2.267,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "SUQ p",
+      "citation": "Section 4.2",
+      "reported": 0.091,
+      "observed": 0.091,
+      "delta": 0.0,
+      "tolerance": 0.001,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "SUQ BF01",
+      "citation": "Section 4.2",
+      "reported": 1.213,
+      "observed": 1.213,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "BayesFactor's anovaBF is Monte Carlo; this is quadrature"
+    },
+    {
+      "quantity": "BSMARS F",
+      "citation": "Section 4.2",
+      "reported": 1.065,
+      "observed": 1.065,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "BSMARS p",
+      "citation": "Section 4.2",
+      "reported": 0.371,
+      "observed": 0.371,
+      "delta": 0.0,
+      "tolerance": 0.001,
+      "status": "match",
+      "notes": ""
+    },
+    {
+      "quantity": "BSMARS BF01",
+      "citation": "Section 4.2",
+      "reported": 3.903,
+      "observed": 3.903,
+      "delta": 0.0,
+      "tolerance": 0.01,
+      "status": "match",
+      "notes": "BayesFactor's anovaBF is Monte Carlo; this is quadrature"
+    }
+  ]
+}

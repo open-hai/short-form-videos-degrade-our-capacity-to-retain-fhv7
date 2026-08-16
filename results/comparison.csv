@@ -1,0 +1,101 @@
+quantity,citation,reported,observed,delta,tolerance,status,notes
+participants,"Section 3.1, 3.2, 3.4",60.0,60.0,0.0,0.0,match,
+PM cue trials per participant per block,"Section 3.1, 3.2, 3.4",16.0,14.0,-2.0,0.5,MISMATCH,counted as trials whose stimulus is one of the three PM cue words
+shortest non-cue stimulus (letters),"Section 3.2, 'a word length ranging from six to eight letters'",6.0,4.0,-2.0,0.0,MISMATCH,44.7% of non-cue trials use strings outside 6-8 letters
+lmm_ld: conditional R2,"Section 4.1.1, Lexical Decision Task",0.67,0.99,0.31999999999999995,0.01,MISMATCH,paper quotes a single R2 without saying marginal or conditional
+lmm_ld: t degrees of freedom,"Section 4.1.1, Lexical Decision Task",114.0,114.0,0.0,0.0,match,
+lmm_ld: beta[rest],"Section 4.1.1, Lexical Decision Task",-0.001,-0.001,0.0,0.006,match,
+lmm_ld: t[rest],"Section 4.1.1, Lexical Decision Task",-0.03,-0.03,0.0,0.05,match,
+lmm_ld: beta[twitter],"Section 4.1.1, Lexical Decision Task",0.005,0.005,0.0,0.006,match,
+lmm_ld: t[twitter],"Section 4.1.1, Lexical Decision Task",0.11,0.11,0.0,0.05,match,
+lmm_ld: beta[youtube],"Section 4.1.1, Lexical Decision Task",-0.07,-0.067,0.0030000000000000027,0.006,match,
+lmm_ld: t[youtube],"Section 4.1.1, Lexical Decision Task",-1.47,-1.47,0.0,0.05,match,
+lmm_pm: conditional R2,"Section 4.1.1, Prospective Memory Task",0.67,0.67,0.0,0.01,match,paper quotes a single R2 without saying marginal or conditional
+lmm_pm: t degrees of freedom,"Section 4.1.1, Prospective Memory Task",110.0,110.0,0.0,0.0,match,
+lmm_pm: beta[rest],"Section 4.1.1, Prospective Memory Task",0.46,0.456,-0.0040000000000000036,0.006,match,
+lmm_pm: t[rest],"Section 4.1.1, Prospective Memory Task",7.25,7.25,0.0,0.05,match,
+lmm_pm: beta[twitter],"Section 4.1.1, Prospective Memory Task",0.49,0.489,-0.0010000000000000009,0.006,match,
+lmm_pm: t[twitter],"Section 4.1.1, Prospective Memory Task",7.77,7.77,0.0,0.05,match,
+lmm_pm: beta[youtube],"Section 4.1.1, Prospective Memory Task",0.34,0.342,0.0020000000000000018,0.006,match,
+lmm_pm: t[youtube],"Section 4.1.1, Prospective Memory Task",5.42,5.42,0.0,0.05,match,
+lmm_pm: beta[pre],"Section 4.1.1, Prospective Memory Task",0.31,0.314,0.0040000000000000036,0.006,match,
+lmm_pm: t[pre],"Section 4.1.1, Prospective Memory Task",6.7,6.7,0.0,0.05,match,
+lmm_ld_vs_pm: conditional R2,"Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",0.38,0.38,0.0,0.01,match,paper quotes a single R2 without saying marginal or conditional
+lmm_ld_vs_pm: t degrees of freedom,"Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",230.0,230.0,0.0,0.0,match,
+lmm_ld_vs_pm: beta[tiktok:PM],"Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",-0.28,-0.277,0.0030000000000000027,0.006,match,
+lmm_ld_vs_pm: t[tiktok:PM],"Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",-5.01,-5.01,0.0,0.05,match,
+lmm_ld_vs_pm: beta[twitter:PM],"Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",-0.005,-0.005,0.0,0.006,match,
+lmm_ld_vs_pm: t[twitter:PM],"Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",-0.1,-0.1,0.0,0.05,match,
+lmm_ld_vs_pm: beta[youtube:PM],"Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",-0.03,-0.025,0.0049999999999999975,0.006,match,
+lmm_ld_vs_pm: t[youtube:PM],"Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks",-0.46,-0.46,0.0,0.05,match,
+Section 4.1.2: significant fixed effects in LD RT model,Section 4.1.2,0.0,1.0,1.0,0.0,MISMATCH,"paper reports none; found: ['interrupt[T.tiktok]:measure[T.post]', 'interrupt[T.twitter]:measure[T.post]']"
+Section 4.1.2: significant fixed effects in PM RT model,Section 4.1.2,0.0,1.0,1.0,0.0,MISMATCH,paper reports none; found: ['interrupt[T.youtube]:measure[T.post]']
+Table 1 F[PM/drift/interrupt],Table 1,4.078,4.078,0.0,0.01,match,ART
+Table 1 effect size[PM/drift/interrupt],Table 1,0.133,0.133,0.0,0.01,match,partial omega^2
+Table 1 F[PM/drift/measure],Table 1,2.42,2.42,0.0,0.01,match,ART
+Table 1 effect size[PM/drift/measure],Table 1,0.024,0.023,-0.0010000000000000009,0.01,match,partial omega^2
+Table 1 F[PM/drift/interaction],Table 1,6.466,6.466,0.0,0.01,match,ART
+Table 1 effect size[PM/drift/interaction],Table 1,0.215,0.215,0.0,0.01,match,partial omega^2
+Table 1 F[PM/noise/interrupt],Table 1,4.233,4.233,0.0,0.01,match,ART
+Table 1 effect size[PM/noise/interrupt],Table 1,0.139,0.139,0.0,0.01,match,partial omega^2
+Table 1 F[PM/noise/measure],Table 1,12.593,12.593,0.0,0.01,match,ART
+Table 1 effect size[PM/noise/measure],Table 1,0.167,0.162,-0.0050000000000000044,0.01,match,partial omega^2
+Table 1 F[PM/noise/interaction],Table 1,4.712,4.712,0.0,0.01,match,ART
+Table 1 effect size[PM/noise/interaction],Table 1,0.157,0.157,0.0,0.01,match,partial omega^2
+Table 1 F[PM/bound/interrupt],Table 1,3.02,3.221,0.20100000000000007,0.01,MISMATCH,ART
+Table 1 effect size[PM/bound/interrupt],Table 1,0.092,0.1,0.008000000000000007,0.01,match,partial omega^2
+Table 1 F[PM/bound/measure],Table 1,0.025,0.024,-0.0010000000000000009,0.01,match,ART
+Table 1 effect size[PM/bound/measure],Table 1,-0.017,-0.017,0.0,0.01,match,partial omega^2
+Table 1 F[PM/bound/interaction],Table 1,2.385,2.233,-0.1519999999999997,0.01,MISMATCH,ART
+Table 1 effect size[PM/bound/interaction],Table 1,0.065,0.058,-0.006999999999999999,0.01,match,partial omega^2
+Table 1 F[PM/nondectime/interrupt],Table 1,1.695,1.695,0.0,0.01,match,ART
+Table 1 effect size[PM/nondectime/interrupt],Table 1,0.034,0.034,0.0,0.01,match,partial omega^2
+Table 1 F[PM/nondectime/measure],Table 1,15.851,15.851,0.0,0.01,match,ART
+Table 1 effect size[PM/nondectime/measure],Table 1,0.204,0.198,-0.005999999999999978,0.01,match,partial omega^2
+Table 1 F[PM/nondectime/interaction],Table 1,2.692,2.692,0.0,0.01,match,ART
+Table 1 effect size[PM/nondectime/interaction],Table 1,0.078,0.078,0.0,0.01,match,partial omega^2
+Table 1 F[LD/drift/interrupt],Table 1,2.52,2.52,0.0,0.01,match,mixed ANOVA
+Table 1 effect size[LD/drift/interrupt],Table 1,0.119,0.119,0.0,0.01,match,partial eta^2
+Table 1 F[LD/drift/measure],Table 1,1.033,1.033,0.0,0.01,match,mixed ANOVA
+Table 1 effect size[LD/drift/measure],Table 1,0.018,0.018,0.0,0.01,match,partial eta^2
+Table 1 F[LD/drift/interaction],Table 1,0.785,0.785,0.0,0.01,match,mixed ANOVA
+Table 1 effect size[LD/drift/interaction],Table 1,0.04,0.04,0.0,0.01,match,partial eta^2
+Table 1 F[LD/noise/interrupt],Table 1,1.615,1.615,0.0,0.01,match,ART
+Table 1 effect size[LD/noise/interrupt],Table 1,0.03,0.03,0.0,0.01,match,partial omega^2
+Table 1 F[LD/noise/measure],Table 1,1.591,1.591,0.0,0.01,match,ART
+Table 1 effect size[LD/noise/measure],Table 1,0.01,0.01,0.0,0.01,match,partial omega^2
+Table 1 F[LD/noise/interaction],Table 1,0.697,0.697,0.0,0.01,match,ART
+Table 1 effect size[LD/noise/interaction],Table 1,-0.015,-0.015,0.0,0.01,match,partial omega^2
+Table 1 F[LD/bound/interrupt],Table 1,1.812,1.812,0.0,0.01,match,ART
+Table 1 effect size[LD/bound/interrupt],Table 1,0.039,0.039,0.0,0.01,match,partial omega^2
+Table 1 F[LD/bound/measure],Table 1,0.069,0.069,0.0,0.01,match,ART
+Table 1 effect size[LD/bound/measure],Table 1,-0.016,-0.016,0.0,0.01,match,partial omega^2
+Table 1 F[LD/bound/interaction],Table 1,0.398,0.398,0.0,0.01,match,ART
+Table 1 effect size[LD/bound/interaction],Table 1,-0.031,-0.031,0.0,0.01,match,partial omega^2
+Table 1 F[LD/nondectime/interrupt],Table 1,1.517,1.517,0.0,0.01,match,ART
+Table 1 effect size[LD/nondectime/interrupt],Table 1,0.025,0.025,0.0,0.01,match,partial omega^2
+Table 1 F[LD/nondectime/measure],Table 1,0.607,0.607,0.0,0.01,match,ART
+Table 1 effect size[LD/nondectime/measure],Table 1,-0.007,-0.007,0.0,0.01,match,partial omega^2
+Table 1 F[LD/nondectime/interaction],Table 1,0.636,0.636,0.0,0.01,match,ART
+Table 1 effect size[LD/nondectime/interaction],Table 1,-0.019,-0.019,0.0,0.01,match,partial omega^2
+Fig 6 pre accuracy %,Section 4.1.3 and Figure 6,80.0,80.0,0.0,0.01,match,
+Fig 6 pre drift,Section 4.1.3 and Figure 6,1.46,0.44,-1.02,0.05,MISMATCH,differential evolution is unseeded
+Fig 6 pre noise,Section 4.1.3 and Figure 6,1.89,0.57,-1.3199999999999998,0.05,MISMATCH,differential evolution is unseeded
+Fig 6 pre bound,Section 4.1.3 and Figure 6,1.94,0.58,-1.3599999999999999,0.05,MISMATCH,differential evolution is unseeded
+Fig 6 pre non-decision time (ms),Section 4.1.3 and Figure 6,461.0,465.0,4.0,2.0,MISMATCH,
+Fig 6 pre fit loss,Section 4.1.3 and Figure 6,457.13,457.16,0.03000000000002956,0.2,match,
+Fig 6 post accuracy %,Section 4.1.3 and Figure 6,49.02,49.02,0.0,0.01,match,
+Fig 6 post drift,Section 4.1.3 and Figure 6,0.0,0.0,0.0,0.05,match,differential evolution is unseeded
+Fig 6 post noise,Section 4.1.3 and Figure 6,2.35,2.33,-0.020000000000000018,0.05,match,differential evolution is unseeded
+Fig 6 post bound,Section 4.1.3 and Figure 6,1.71,1.7,-0.010000000000000009,0.05,match,differential evolution is unseeded
+Fig 6 post non-decision time (ms),Section 4.1.3 and Figure 6,681.0,680.0,-1.0,2.0,match,
+Fig 6 post fit loss,Section 4.1.3 and Figure 6,461.46,461.47,0.010000000000047748,0.2,match,
+ENGAGE F,Section 4.2,2.59,2.592,0.002000000000000224,0.01,match,
+ENGAGE p,Section 4.2,0.062,0.062,0.0,0.001,match,
+ENGAGE BF01,Section 4.2,0.893,0.886,-0.007000000000000006,0.01,match,BayesFactor's anovaBF is Monte Carlo; this is quadrature
+SUQ F,Section 4.2,2.267,2.267,0.0,0.01,match,
+SUQ p,Section 4.2,0.091,0.091,0.0,0.001,match,
+SUQ BF01,Section 4.2,1.213,1.213,0.0,0.01,match,BayesFactor's anovaBF is Monte Carlo; this is quadrature
+BSMARS F,Section 4.2,1.065,1.065,0.0,0.01,match,
+BSMARS p,Section 4.2,0.371,0.371,0.0,0.001,match,
+BSMARS BF01,Section 4.2,3.903,3.903,0.0,0.01,match,BayesFactor's anovaBF is Monte Carlo; this is quadrature

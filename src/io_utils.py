@@ -54,6 +54,7 @@ def describe_trials(df: pd.DataFrame) -> dict:
         .groupby(["folder_id", "measure"])
         .size()
     )
+    lengths = exp.loc[~cue.loc[exp.index], "stimulus"].astype(str).str.len()
     return {
         "n_participants": int(df.folder_id.nunique()),
         "participants_per_condition": {
@@ -76,6 +77,14 @@ def describe_trials(df: pd.DataFrame) -> dict:
         "trials_labelled_LD_with_a_PM_cue_stimulus": int(
             ((df.task == "LD") & cue).sum()
         ),
+        "non_cue_stimulus_length": {
+            "min": int(lengths.min()),
+            "max": int(lengths.max()),
+            "mean": float(lengths.mean()),
+            "share_outside_6_to_8_letters": float(
+                ((lengths < 6) | (lengths > 8)).mean()
+            ),
+        },
     }
 
 

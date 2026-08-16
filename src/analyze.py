@@ -110,6 +110,18 @@ def main() -> int:
         )
     )
 
+    comparisons.append(
+        compare(
+            desc["non_cue_stimulus_length"]["min"],
+            6,
+            0,
+            "shortest non-cue stimulus (letters)",
+            "Section 3.2, 'a word length ranging from six to eight letters'",
+            f"{desc['non_cue_stimulus_length']['share_outside_6_to_8_letters'] * 100:.1f}% of"
+            " non-cue trials use strings outside 6-8 letters",
+        )
+    )
+
     # ------------------------------------------------------------ accuracy
     log("[2/8] deriving accuracy and fitting the accuracy LMMs")
     acc = acc_mod.derive_accuracy(trials)
