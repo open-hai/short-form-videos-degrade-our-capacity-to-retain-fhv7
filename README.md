@@ -77,6 +77,10 @@ Figures 3–6.
   parameters are.
 * `src/reported.json` — every number quoted from the paper, each tagged with its section, table
   or figure. This is the ground truth the comparison table is checked against.
+* `src/compare_ddm.py` — compares two sets of DDM estimates (published vs refitted).
+* `src/make_synthetic_input.py` — writes a schema-conformant file of random noise, purely to check
+  that the entrypoint runs on data it has never seen. It is not a simulation of the study and
+  nothing in the audit is based on it.
 
 ## Headline result
 

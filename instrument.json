@@ -3,18 +3,66 @@
     "design": "Between-subjects, one four-level factor Interruption (Rest, Twitter, YouTube, TikTok) crossed with a within-subjects factor Measure (pre, post) that the interruption sits between; N = 60, 15 per condition (Section 3, Section 3.1). Assignment was not free randomisation: participants were assigned to the platform they reported using most in the previous week, or to Rest, so each social-media condition contains habitual users of that platform (Section 3.1). Within-participant counterbalancing is limited to the key-response mapping of the lexical decision task, which was counterbalanced across participants (Section 3.2). Order is fixed for everyone: Beginning Survey, condition assignment, training, Task pre, Interruption, Task post, Ending Survey (Section 3.4, Figure 2).",
     "trials": "Two identical experimental blocks (Task pre, Task post) of a dual task: a lexical decision (LD) task with an embedded prospective memory (PM) task, implemented in PsychoPy (Sections 3.2, 3.4). Each block is stated as 160 LD trials plus 16 PM trials, i.e. 320 LD and 32 PM in total (Section 3.2); Section 3.4 describes Task pre as 176 trials and Task post as 160 LD plus 16 PM. The released data instead contain exactly 14 PM cue trials per participant per block. Each trial: fixation cross for a pseudorandom 1250, 1500 or 1750 ms, then a letter string for at most 3000 ms, then a 1000 ms inter-stimulus interval (Section 3.2). LD stimuli are German words from SUBTLEX-DE with a stated length of six to eight letters plus pseudo-words made by changing one or two letters; participants press N for words and M for non-words (Section 3.2). PM cues are the three colour words 'blau', 'lila' and 'grün', answered with Q, W and E respectively, instead of the LD keys (Section 3.2, Figure 1). At least 10 LD trials precede the first PM cue and at least 8 separate consecutive cues (Section 3.2). A practice block precedes the experiment - described as five LD-only trials in Section 3.2 and as 10 combined LD+PM trials in Section 3.4. The interruption lasts 10 minutes and is one of: rest with no screens; scrolling one's own Twitter feed; watching one self-chosen video from a prepared list of ten (the released list has eleven); scrolling one's own TikTok feed (Section 3.3). Participants used their own phones and headphones (Section 3.2).",
     "measures": [
-      { "name": "response_correct", "scale": "binary (correct / incorrect key press)", "level": "per_trial" },
-      { "name": "response_given", "scale": "binary (a key was pressed within 3000 ms or not)", "level": "per_trial" },
-      { "name": "reaction_time", "scale": "seconds from stimulus onset to key press", "level": "per_trial" },
-      { "name": "response_accuracy", "scale": "proportion: correct key presses / key presses, computed separately for LD and PM and for pre and post", "level": "per_participant" },
-      { "name": "ddm_drift", "scale": "drift rate mu, arbitrary evidence units, fitted per participant x task x block", "level": "per_participant" },
-      { "name": "ddm_noise", "scale": "diffusion variance sigma, arbitrary units", "level": "per_participant" },
-      { "name": "ddm_bound", "scale": "decision bound B, arbitrary units", "level": "per_participant" },
-      { "name": "ddm_nondectime", "scale": "non-decision time t, seconds", "level": "per_participant" },
-      { "name": "engagement", "scale": "single item, 1 = Completely Disagree to 5 = Completely Agree ('I felt engaged during the task break')", "level": "per_participant" },
-      { "name": "SUQ-A", "scale": "Smartphone Usage Questionnaire - Absent-minded use; items on 1 = Never to 7 = All the time; released as a score in 1.6-6.8, i.e. an item mean", "level": "per_participant" },
-      { "name": "BSMAS", "scale": "Bergen Social Media Addiction Scale; items 1 = Very rarely to 5 = Very often; released as a sum in 5-18", "level": "per_participant" },
-      { "name": "weekly_screen_time", "scale": "self-reported hours per day averaged over the last week, read off iPhone Screen Time / Android Digital Wellbeing, plus per-app time in the beginning survey", "level": "per_participant" }
+      {
+        "name": "response_correct",
+        "scale": "binary (correct / incorrect key press)",
+        "level": "per_trial"
+      },
+      {
+        "name": "response_given",
+        "scale": "binary (a key was pressed within 3000 ms or not)",
+        "level": "per_trial"
+      },
+      {
+        "name": "reaction_time",
+        "scale": "seconds from stimulus onset to key press",
+        "level": "per_trial"
+      },
+      {
+        "name": "response_accuracy",
+        "scale": "proportion: correct key presses / key presses, computed separately for LD and PM and for pre and post",
+        "level": "per_participant"
+      },
+      {
+        "name": "ddm_drift",
+        "scale": "drift rate mu, arbitrary evidence units, fitted per participant x task x block",
+        "level": "per_participant"
+      },
+      {
+        "name": "ddm_noise",
+        "scale": "diffusion variance sigma, arbitrary units",
+        "level": "per_participant"
+      },
+      {
+        "name": "ddm_bound",
+        "scale": "decision bound B, arbitrary units",
+        "level": "per_participant"
+      },
+      {
+        "name": "ddm_nondectime",
+        "scale": "non-decision time t, seconds",
+        "level": "per_participant"
+      },
+      {
+        "name": "engagement",
+        "scale": "single item, 1 = Completely Disagree to 5 = Completely Agree ('I felt engaged during the task break')",
+        "level": "per_participant"
+      },
+      {
+        "name": "SUQ-A",
+        "scale": "Smartphone Usage Questionnaire - Absent-minded use; items on 1 = Never to 7 = All the time; released as a score in 1.6-6.8, i.e. an item mean",
+        "level": "per_participant"
+      },
+      {
+        "name": "BSMAS",
+        "scale": "Bergen Social Media Addiction Scale; items 1 = Very rarely to 5 = Very often; released as a sum in 5-18",
+        "level": "per_participant"
+      },
+      {
+        "name": "weekly_screen_time",
+        "scale": "self-reported hours per day averaged over the last week, read off iPhone Screen Time / Android Digital Wellbeing, plus per-app time in the beginning survey",
+        "level": "per_participant"
+      }
     ],
     "plan": [
       "Response accuracy: linear mixed models with a by-participant random intercept - accuracy ~ interrupt + (1|user_id) for the LD task; accuracy ~ interrupt * measure + interrupt + measure + (1|user_id) for the PM task; accuracy ~ interrupt * task + interrupt + task + (1|user_id) for the LD-vs-PM comparison; REML with the nloptwrap optimiser, guided by BIC (Section 4.1.1).",
@@ -25,64 +73,369 @@
       "Questionnaires: one-way mixed ANOVA on Interruption for engagement, SUQ-A and BSMAS, followed by a Bayes-factor ANOVA whenever the frequentist test is non-significant (Sections 4, 4.2)."
     ],
     "reported": [
-      { "metric": "PM response accuracy, TikTok post-interruption (model intercept)", "effect": "0.49", "test": "LMM Wald t", "value": "t = 10.94", "interval": "95% CI [0.40, 0.58]", "n": 60, "citation": "Section 4.1.1, Prospective Memory Task" },
-      { "metric": "PM accuracy, Rest vs TikTok post-interruption", "effect": "beta = 0.46", "test": "LMM Wald t", "value": "t(110) = 7.25, p < .001", "interval": "95% CI [0.33, 0.58]", "n": 60, "citation": "Section 4.1.1, Prospective Memory Task" },
-      { "metric": "PM accuracy, Twitter vs TikTok post-interruption", "effect": "beta = 0.49", "test": "LMM Wald t", "value": "t(110) = 7.77, p < .001", "interval": "95% CI [0.36, 0.61]", "n": 60, "citation": "Section 4.1.1, Prospective Memory Task" },
-      { "metric": "PM accuracy, YouTube vs TikTok post-interruption", "effect": "beta = 0.34", "test": "LMM Wald t", "value": "t(110) = 5.42, p < .001", "interval": "95% CI [0.22, 0.47]", "n": 60, "citation": "Section 4.1.1, Prospective Memory Task" },
-      { "metric": "PM accuracy, pre vs post within TikTok", "effect": "beta = 0.31", "test": "LMM Wald t", "value": "t(110) = 6.70, p < .001", "interval": "95% CI [0.22, 0.41]", "n": 60, "citation": "Section 4.1.1, Prospective Memory Task" },
-      { "metric": "LD accuracy, effect of interruption condition", "effect": "beta = -0.001 (Rest), 0.005 (Twitter), -0.07 (YouTube) vs TikTok", "test": "LMM Wald t", "value": "t(114) = -0.03 (p = .975), 0.11 (p = .913), -1.47 (p = .144)", "interval": "95% CI [-0.09, 0.09], [-0.09, 0.10], [-0.16, 0.02]", "n": 60, "citation": "Section 4.1.1, Lexical Decision Task" },
-      { "metric": "Accuracy, PM task under TikTok vs LD task", "effect": "beta = -0.28", "test": "LMM Wald t", "value": "t(230) = -5.01, p < .001", "interval": "95% CI [-0.39, -0.17]", "n": 60, "citation": "Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks" },
-      { "metric": "Reaction times, LD and PM tasks", "effect": "no significant effect reported", "test": "Gamma-log GLMM", "value": "not reported", "interval": null, "n": 60, "citation": "Section 4.1.2" },
-      { "metric": "PM drift rate, effect of Interruption", "effect": "partial omega^2 = 0.133", "test": "ART ANOVA", "value": "F(3,56) = 4.078, p = .011", "interval": null, "n": 60, "citation": "Table 1" },
-      { "metric": "PM drift rate, Interruption x Pre-Post", "effect": "partial omega^2 = 0.215", "test": "ART ANOVA", "value": "F(3,56) = 6.466, p = .001", "interval": null, "n": 60, "citation": "Table 1" },
-      { "metric": "PM variance, effect of Interruption", "effect": "partial omega^2 = 0.139", "test": "ART ANOVA", "value": "F(3,56) = 4.233, p = .009", "interval": null, "n": 60, "citation": "Table 1" },
-      { "metric": "PM variance, Pre-Post", "effect": "partial omega^2 = 0.167", "test": "ART ANOVA", "value": "F(1,56) = 12.593, p = .001", "interval": null, "n": 60, "citation": "Table 1" },
-      { "metric": "PM decision bound, effect of Interruption", "effect": "partial omega^2 = 0.092", "test": "ART ANOVA", "value": "F(3,56) = 3.020, p = .037", "interval": null, "n": 60, "citation": "Table 1" },
-      { "metric": "PM non-decision time, Pre-Post", "effect": "partial omega^2 = 0.204", "test": "ART ANOVA", "value": "F(1,56) = 15.851, p < .001", "interval": null, "n": 60, "citation": "Table 1" },
-      { "metric": "LD task, all four DDM parameters", "effect": "no significant effect", "test": "two-way ANOVA / ART ANOVA", "value": "largest F(3,56) = 2.520, p = .067", "interval": null, "n": 60, "citation": "Table 1, Section 4.1.3" },
-      { "metric": "PM drift, TikTok pre vs post", "effect": "SE = 8.456", "test": "ART post-hoc contrast, Holm", "value": "t(56) = -4.683, p < .001", "interval": null, "n": 15, "citation": "Section 4.1.3" },
-      { "metric": "PM drift, TikTok vs Rest", "effect": "SE = 11.66", "test": "ART post-hoc contrast, Holm", "value": "t(91.45) = 4.18, p = .002", "interval": null, "n": 30, "citation": "Section 4.1.3" },
-      { "metric": "PM variance, TikTok vs Rest", "effect": "SE = 11.52", "test": "ART post-hoc contrast, Holm", "value": "t(106.93) = -3.72, p = .009", "interval": null, "n": 30, "citation": "Section 4.1.3" },
-      { "metric": "PM decision bound, TikTok vs Rest", "effect": "SE = 12.04", "test": "ART post-hoc contrast, Holm", "value": "t(112) = 4.14, p = .002", "interval": null, "n": 30, "citation": "Section 4.1.3" },
-      { "metric": "Pooled TikTok PM fit, pre-interruption", "effect": "mu = 1.46, sigma = 1.89, B = 1.94, t = 461 ms", "test": "PyDDM fit, total loss 457.13", "value": "response accuracy 80.00%, error 20.00%", "interval": null, "n": 15, "citation": "Section 4.1.3 and Figure 6" },
-      { "metric": "Pooled TikTok PM fit, post-interruption", "effect": "mu = 0.000, sigma = 2.35, B = 1.71, t = 681 ms", "test": "PyDDM fit, total loss 461.46", "value": "response accuracy 49.02%, error 50.98%", "interval": null, "n": 15, "citation": "Section 4.1.3 and Figure 6" },
-      { "metric": "Subjective engagement across conditions", "effect": "BF01 = 0.893", "test": "one-way ANOVA + Bayes factor ANOVA", "value": "F(3,56) = 2.59, p = .062", "interval": null, "n": 60, "citation": "Section 4.2.1" },
-      { "metric": "SUQ-A across conditions", "effect": "BF01 = 1.213", "test": "one-way ANOVA + Bayes factor ANOVA", "value": "F(3,56) = 2.267, p = .091", "interval": null, "n": 60, "citation": "Section 4.2.2" },
-      { "metric": "BSMAS across conditions", "effect": "BF01 = 3.903", "test": "one-way ANOVA + Bayes factor ANOVA", "value": "F(3,56) = 1.065, p = .371", "interval": null, "n": 60, "citation": "Section 4.2.2" },
-      { "metric": "PM cue detection accuracy after the TikTok interruption", "effect": "decrease of almost 40%", "test": "descriptive", "value": "80.00% -> 49.02% pooled; 39.2% relative per participant", "interval": null, "n": 15, "citation": "Section 5.2" }
+      {
+        "metric": "PM response accuracy, TikTok post-interruption (model intercept)",
+        "effect": "0.49",
+        "test": "LMM Wald t",
+        "value": "t = 10.94",
+        "interval": "95% CI [0.40, 0.58]",
+        "n": 60,
+        "citation": "Section 4.1.1, Prospective Memory Task"
+      },
+      {
+        "metric": "PM accuracy, Rest vs TikTok post-interruption",
+        "effect": "beta = 0.46",
+        "test": "LMM Wald t",
+        "value": "t(110) = 7.25, p < .001",
+        "interval": "95% CI [0.33, 0.58]",
+        "n": 60,
+        "citation": "Section 4.1.1, Prospective Memory Task"
+      },
+      {
+        "metric": "PM accuracy, Twitter vs TikTok post-interruption",
+        "effect": "beta = 0.49",
+        "test": "LMM Wald t",
+        "value": "t(110) = 7.77, p < .001",
+        "interval": "95% CI [0.36, 0.61]",
+        "n": 60,
+        "citation": "Section 4.1.1, Prospective Memory Task"
+      },
+      {
+        "metric": "PM accuracy, YouTube vs TikTok post-interruption",
+        "effect": "beta = 0.34",
+        "test": "LMM Wald t",
+        "value": "t(110) = 5.42, p < .001",
+        "interval": "95% CI [0.22, 0.47]",
+        "n": 60,
+        "citation": "Section 4.1.1, Prospective Memory Task"
+      },
+      {
+        "metric": "PM accuracy, pre vs post within TikTok",
+        "effect": "beta = 0.31",
+        "test": "LMM Wald t",
+        "value": "t(110) = 6.70, p < .001",
+        "interval": "95% CI [0.22, 0.41]",
+        "n": 60,
+        "citation": "Section 4.1.1, Prospective Memory Task"
+      },
+      {
+        "metric": "LD accuracy, effect of interruption condition",
+        "effect": "beta = -0.001 (Rest), 0.005 (Twitter), -0.07 (YouTube) vs TikTok",
+        "test": "LMM Wald t",
+        "value": "t(114) = -0.03 (p = .975), 0.11 (p = .913), -1.47 (p = .144)",
+        "interval": "95% CI [-0.09, 0.09], [-0.09, 0.10], [-0.16, 0.02]",
+        "n": 60,
+        "citation": "Section 4.1.1, Lexical Decision Task"
+      },
+      {
+        "metric": "Accuracy, PM task under TikTok vs LD task",
+        "effect": "beta = -0.28",
+        "test": "LMM Wald t",
+        "value": "t(230) = -5.01, p < .001",
+        "interval": "95% CI [-0.39, -0.17]",
+        "n": 60,
+        "citation": "Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks"
+      },
+      {
+        "metric": "Reaction times, LD and PM tasks",
+        "effect": "no significant effect reported",
+        "test": "Gamma-log GLMM",
+        "value": "not reported",
+        "interval": null,
+        "n": 60,
+        "citation": "Section 4.1.2"
+      },
+      {
+        "metric": "PM drift rate, effect of Interruption",
+        "effect": "partial omega^2 = 0.133",
+        "test": "ART ANOVA",
+        "value": "F(3,56) = 4.078, p = .011",
+        "interval": null,
+        "n": 60,
+        "citation": "Table 1"
+      },
+      {
+        "metric": "PM drift rate, Interruption x Pre-Post",
+        "effect": "partial omega^2 = 0.215",
+        "test": "ART ANOVA",
+        "value": "F(3,56) = 6.466, p = .001",
+        "interval": null,
+        "n": 60,
+        "citation": "Table 1"
+      },
+      {
+        "metric": "PM variance, effect of Interruption",
+        "effect": "partial omega^2 = 0.139",
+        "test": "ART ANOVA",
+        "value": "F(3,56) = 4.233, p = .009",
+        "interval": null,
+        "n": 60,
+        "citation": "Table 1"
+      },
+      {
+        "metric": "PM variance, Pre-Post",
+        "effect": "partial omega^2 = 0.167",
+        "test": "ART ANOVA",
+        "value": "F(1,56) = 12.593, p = .001",
+        "interval": null,
+        "n": 60,
+        "citation": "Table 1"
+      },
+      {
+        "metric": "PM decision bound, effect of Interruption",
+        "effect": "partial omega^2 = 0.092",
+        "test": "ART ANOVA",
+        "value": "F(3,56) = 3.020, p = .037",
+        "interval": null,
+        "n": 60,
+        "citation": "Table 1"
+      },
+      {
+        "metric": "PM non-decision time, Pre-Post",
+        "effect": "partial omega^2 = 0.204",
+        "test": "ART ANOVA",
+        "value": "F(1,56) = 15.851, p < .001",
+        "interval": null,
+        "n": 60,
+        "citation": "Table 1"
+      },
+      {
+        "metric": "LD task, all four DDM parameters",
+        "effect": "no significant effect",
+        "test": "two-way ANOVA / ART ANOVA",
+        "value": "largest F(3,56) = 2.520, p = .067",
+        "interval": null,
+        "n": 60,
+        "citation": "Table 1, Section 4.1.3"
+      },
+      {
+        "metric": "PM drift, TikTok pre vs post",
+        "effect": "SE = 8.456",
+        "test": "ART post-hoc contrast, Holm",
+        "value": "t(56) = -4.683, p < .001",
+        "interval": null,
+        "n": 15,
+        "citation": "Section 4.1.3"
+      },
+      {
+        "metric": "PM drift, TikTok vs Rest",
+        "effect": "SE = 11.66",
+        "test": "ART post-hoc contrast, Holm",
+        "value": "t(91.45) = 4.18, p = .002",
+        "interval": null,
+        "n": 30,
+        "citation": "Section 4.1.3"
+      },
+      {
+        "metric": "PM variance, TikTok vs Rest",
+        "effect": "SE = 11.52",
+        "test": "ART post-hoc contrast, Holm",
+        "value": "t(106.93) = -3.72, p = .009",
+        "interval": null,
+        "n": 30,
+        "citation": "Section 4.1.3"
+      },
+      {
+        "metric": "PM decision bound, TikTok vs Rest",
+        "effect": "SE = 12.04",
+        "test": "ART post-hoc contrast, Holm",
+        "value": "t(112) = 4.14, p = .002",
+        "interval": null,
+        "n": 30,
+        "citation": "Section 4.1.3"
+      },
+      {
+        "metric": "Pooled TikTok PM fit, pre-interruption",
+        "effect": "mu = 1.46, sigma = 1.89, B = 1.94, t = 461 ms",
+        "test": "PyDDM fit, total loss 457.13",
+        "value": "response accuracy 80.00%, error 20.00%",
+        "interval": null,
+        "n": 15,
+        "citation": "Section 4.1.3 and Figure 6"
+      },
+      {
+        "metric": "Pooled TikTok PM fit, post-interruption",
+        "effect": "mu = 0.000, sigma = 2.35, B = 1.71, t = 681 ms",
+        "test": "PyDDM fit, total loss 461.46",
+        "value": "response accuracy 49.02%, error 50.98%",
+        "interval": null,
+        "n": 15,
+        "citation": "Section 4.1.3 and Figure 6"
+      },
+      {
+        "metric": "Subjective engagement across conditions",
+        "effect": "BF01 = 0.893",
+        "test": "one-way ANOVA + Bayes factor ANOVA",
+        "value": "F(3,56) = 2.59, p = .062",
+        "interval": null,
+        "n": 60,
+        "citation": "Section 4.2.1"
+      },
+      {
+        "metric": "SUQ-A across conditions",
+        "effect": "BF01 = 1.213",
+        "test": "one-way ANOVA + Bayes factor ANOVA",
+        "value": "F(3,56) = 2.267, p = .091",
+        "interval": null,
+        "n": 60,
+        "citation": "Section 4.2.2"
+      },
+      {
+        "metric": "BSMAS across conditions",
+        "effect": "BF01 = 3.903",
+        "test": "one-way ANOVA + Bayes factor ANOVA",
+        "value": "F(3,56) = 1.065, p = .371",
+        "interval": null,
+        "n": 60,
+        "citation": "Section 4.2.2"
+      },
+      {
+        "metric": "PM cue detection accuracy after the TikTok interruption",
+        "effect": "decrease of almost 40%",
+        "test": "descriptive",
+        "value": "80.00% -> 49.02% pooled; 39.2% relative per participant",
+        "interval": null,
+        "n": 15,
+        "citation": "Section 5.2"
+      }
     ]
   },
   "analysis": {
-    "command": "python src/analyze.py {{INPUT}} --questionnaires data/q.csv --ddm data/ddm.csv --out results",
-    "notes": "{{INPUT}} is a trial-level CSV. --questionnaires is optional and enables Section 4.2; --ddm is optional and supplies pre-fitted DDM parameters for Table 1, omit it to refit all 240 cells from {{INPUT}} (add --ddm-dt 0.0001 for the authors' discretisation). Runs end to end on Python 3.11 with the pinned requirements.txt; the run recorded in results/ took about 40 s with --ddm supplied.",
+    "command": "python src/analyze.py {{INPUT}} --out results",
+    "notes": "{{INPUT}} is a trial-level CSV with the columns below. With no other flag the command derives accuracy, fits the accuracy LMMs, fits the trial-level RT and accuracy models, refits every per-participant DDM (add --ddm-dt 0.0001 for the authors' discretisation, or --ddm PATH to supply pre-fitted parameters instead), runs the Table 1 ANOVAs and post-hoc contrasts, fits the pooled TikTok models and redraws Figures 3-6; add --questionnaires PATH to enable Section 4.2, and --skip-cell-ddm to skip the 240 fits. Verified on Python 3.11 with the pinned requirements.txt against the authors' released rt.csv, and against a schema-conformant unseen file produced by src/make_synthetic_input.py. The run recorded in results/ used 'python src/analyze.py /tmp/mpm-data/rt.csv --questionnaires /tmp/mpm-data/q.csv --ddm /tmp/mpm-data/ddm.csv --ddm-dt 0.0001 --out results'.",
     "input": {
       "columns": [
-        { "name": "folder_id", "type": "integer or string", "unit": "participant identifier", "required": true },
-        { "name": "task", "type": "string", "unit": "LD | PM - which task the trial was scored as", "required": true },
-        { "name": "interrupt", "type": "string", "unit": "rest | twitter | youtube | tiktok - between-subjects condition", "required": true },
-        { "name": "measure", "type": "string", "unit": "pre | post | train - experimental block", "required": true },
-        { "name": "stimulus", "type": "string", "unit": "the letter string shown on that trial", "required": true },
-        { "name": "success", "type": "boolean", "unit": "true if a key was pressed within the response window", "required": true },
-        { "name": "correct", "type": "boolean", "unit": "true if the key pressed was the correct one", "required": true },
-        { "name": "rt", "type": "float", "unit": "seconds from stimulus onset; empty when success is false", "required": true }
+        {
+          "name": "folder_id",
+          "type": "integer or string",
+          "unit": "participant identifier",
+          "required": true
+        },
+        {
+          "name": "task",
+          "type": "string",
+          "unit": "LD | PM - which task the trial was scored as",
+          "required": true
+        },
+        {
+          "name": "interrupt",
+          "type": "string",
+          "unit": "rest | twitter | youtube | tiktok - between-subjects condition",
+          "required": true
+        },
+        {
+          "name": "measure",
+          "type": "string",
+          "unit": "pre | post | train - experimental block",
+          "required": true
+        },
+        {
+          "name": "stimulus",
+          "type": "string",
+          "unit": "the letter string shown on that trial",
+          "required": true
+        },
+        {
+          "name": "success",
+          "type": "boolean",
+          "unit": "true if a key was pressed within the response window",
+          "required": true
+        },
+        {
+          "name": "correct",
+          "type": "boolean",
+          "unit": "true if the key pressed was the correct one",
+          "required": true
+        },
+        {
+          "name": "rt",
+          "type": "float",
+          "unit": "seconds from stimulus onset; empty when success is false",
+          "required": true
+        }
       ],
       "optional_files": {
         "questionnaires": [
-          { "name": "folder_id", "type": "integer or string", "unit": "participant identifier", "required": true },
-          { "name": "interrupt", "type": "string", "unit": "rest | twitter | youtube | tiktok", "required": true },
-          { "name": "ENGAGE", "type": "integer", "unit": "1-5 single engagement item", "required": true },
-          { "name": "SUQ", "type": "float", "unit": "SUQ-A item mean, 1-7", "required": true },
-          { "name": "BSMARS", "type": "float", "unit": "BSMAS sum score", "required": true }
+          {
+            "name": "folder_id",
+            "type": "integer or string",
+            "unit": "participant identifier",
+            "required": true
+          },
+          {
+            "name": "interrupt",
+            "type": "string",
+            "unit": "rest | twitter | youtube | tiktok",
+            "required": true
+          },
+          {
+            "name": "ENGAGE",
+            "type": "integer",
+            "unit": "1-5 single engagement item",
+            "required": true
+          },
+          {
+            "name": "SUQ",
+            "type": "float",
+            "unit": "SUQ-A item mean, 1-7",
+            "required": true
+          },
+          {
+            "name": "BSMARS",
+            "type": "float",
+            "unit": "BSMAS sum score",
+            "required": true
+          }
         ],
         "ddm": [
-          { "name": "folder_id", "type": "integer or string", "unit": "participant identifier", "required": true },
-          { "name": "interrupt", "type": "string", "unit": "condition", "required": true },
-          { "name": "task", "type": "string", "unit": "LD | PM", "required": true },
-          { "name": "measure", "type": "string", "unit": "pre | post", "required": true },
-          { "name": "drift", "type": "float", "unit": "fitted drift rate", "required": true },
-          { "name": "noise", "type": "float", "unit": "fitted diffusion variance", "required": true },
-          { "name": "bound", "type": "float", "unit": "fitted decision bound", "required": true },
-          { "name": "nondectime", "type": "float", "unit": "fitted non-decision time, seconds", "required": true }
+          {
+            "name": "folder_id",
+            "type": "integer or string",
+            "unit": "participant identifier",
+            "required": true
+          },
+          {
+            "name": "interrupt",
+            "type": "string",
+            "unit": "condition",
+            "required": true
+          },
+          {
+            "name": "task",
+            "type": "string",
+            "unit": "LD | PM",
+            "required": true
+          },
+          {
+            "name": "measure",
+            "type": "string",
+            "unit": "pre | post",
+            "required": true
+          },
+          {
+            "name": "drift",
+            "type": "float",
+            "unit": "fitted drift rate",
+            "required": true
+          },
+          {
+            "name": "noise",
+            "type": "float",
+            "unit": "fitted diffusion variance",
+            "required": true
+          },
+          {
+            "name": "bound",
+            "type": "float",
+            "unit": "fitted decision bound",
+            "required": true
+          },
+          {
+            "name": "nondectime",
+            "type": "float",
+            "unit": "fitted non-decision time, seconds",
+            "required": true
+          }
         ]
       }
     },
@@ -105,37 +458,56 @@
       {
         "component": "Recruitment and eligibility screening of 60 fluent German speakers (Section 3.1)",
         "servable": false,
-        "failed_criteria": ["no_experimenter", "apparatus_recovered"],
+        "failed_criteria": [
+          "no_experimenter",
+          "apparatus_recovered"
+        ],
         "why": "Language proficiency at C2 and the absence of neurological or psychiatric history were established by the experimenter at intake; no screening instrument was released, so a page could not reproduce the eligibility check."
       },
       {
         "component": "Condition assignment from self-reported platform screen time (Section 3.1, Figure 2)",
         "servable": false,
-        "failed_criteria": ["page_administrable", "apparatus_recovered"],
+        "failed_criteria": [
+          "page_administrable",
+          "apparatus_recovered"
+        ],
         "why": "The assignment reads a screen-time figure that the participant looks up inside iOS Screen Time or Android Digital Wellbeing - software the page neither controls nor can verify - and the beginning survey that collected it was never released."
       },
       {
         "component": "Dual lexical-decision and prospective-memory task, Task pre and Task post (Sections 3.2, 3.4, Figure 1)",
         "servable": false,
-        "failed_criteria": ["apparatus_recovered"],
+        "failed_criteria": [
+          "apparatus_recovered"
+        ],
         "why": "Mechanically this is a keyboard task that a browser could serve, and the stimulus strings survive inside the released rt.csv - but the PsychoPy program, the word/pseudo-word labelling, the frequency matching, the cue schedule and the key-mapping counterbalancing were not released, and the released strings contradict the stated 6-8 letter range, so the apparatus cannot be rebuilt faithfully. Timing (165 Hz monitor, 3000 ms limit, 1250/1500/1750 ms fixation) is otherwise within browser reach."
       },
       {
         "component": "The 10-minute interruption on TikTok, Twitter, YouTube or Rest (Section 3.3)",
         "servable": false,
-        "failed_criteria": ["screen_based", "no_experimenter", "page_administrable", "apparatus_recovered"],
+        "failed_criteria": [
+          "screen_based",
+          "no_experimenter",
+          "page_administrable",
+          "apparatus_recovered"
+        ],
         "why": "The manipulation happens in three third-party apps on the participant's own phone, on a personalised feed the page cannot serve, verify or even observe; the Rest condition depends on an experimenter confirming that no screen was used; and the YouTube playlist as released (eleven links, contents and availability unknown today) cannot be reconstituted."
       },
       {
         "component": "Beginning and ending surveys: engagement item, SUQ-A, BSMAS, screen-time reports (Section 3.5)",
         "servable": false,
-        "failed_criteria": ["page_administrable", "apparatus_recovered"],
+        "failed_criteria": [
+          "page_administrable",
+          "apparatus_recovered"
+        ],
         "why": "The scale items are recoverable from the released questionnaire PDF, but two items are duplicated in it and the demographic and screen-time items are missing entirely; the screen-time question again defers to phone software the page cannot read."
       },
       {
         "component": "Session administration: consent, training block, prompting participants back after the break (Section 3.4)",
         "servable": false,
-        "failed_criteria": ["no_experimenter", "apparatus_recovered"],
+        "failed_criteria": [
+          "no_experimenter",
+          "apparatus_recovered"
+        ],
         "why": "An experimenter takes consent and calls the participant back to the computer after the interruption; the training block itself is described two different ways (five LD-only trials in Section 3.2, ten combined trials in Section 3.4), so even its content is not pinned down."
       }
     ]
