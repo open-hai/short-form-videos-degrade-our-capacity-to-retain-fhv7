@@ -271,7 +271,7 @@ def main() -> int:
                 comparisons.append(compare(round(row["F"], 3), r["F"], 0.01, f"{row['scale']} F", rep["citation"]))
                 comparisons.append(compare(round(row["p"], 3), r["p"], 0.001, f"{row['scale']} p", rep["citation"]))
                 comparisons.append(
-                    compare(round(row["BF01"], 3), r["BF01"], 0.01, f"{row['scale']} BF01", rep["citation"], "BayesFactor's anovaBF is Monte Carlo; this is quadrature")
+                    compare(round(row["BF01"], 3), r["BF01"], 0.01, f"{row['scale']} BF01", rep["citation"], "JZS r=0.5 by quadrature; the paper names no prior or software")
                 )
         extra = [c for c in q.columns if c.startswith("META_")]
         if extra:

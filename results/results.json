@@ -1,6 +1,6 @@
 {
   "input": "/tmp/mpm-data/rt.csv",
-  "started": "2026-08-16T14:27:20Z",
+  "started": "2026-08-16T14:49:37Z",
   "data_description": {
     "n_participants": 60,
     "participants_per_condition": {
@@ -670,58 +670,58 @@
       "terms": [
         {
           "term": "Intercept",
-          "posterior_mean": 5.135755232866251,
-          "posterior_sd": 0.05585074436191741,
-          "z": 91.9550006278544,
+          "posterior_mean": 5.135754883028171,
+          "posterior_sd": 0.0558508346447503,
+          "z": 91.95484571887067,
           "credible_interval_excludes_zero": true
         },
         {
           "term": "interrupt[T.rest]",
-          "posterior_mean": 0.07532211772146072,
-          "posterior_sd": 0.11034604342638836,
-          "z": 0.6825991705965241,
+          "posterior_mean": 0.07532319027768028,
+          "posterior_sd": 0.11034568098401373,
+          "z": 0.6826111326332082,
           "credible_interval_excludes_zero": false
         },
         {
           "term": "interrupt[T.twitter]",
-          "posterior_mean": -0.059687002313582364,
-          "posterior_sd": 0.12465184921461454,
-          "z": -0.47882965788031395,
+          "posterior_mean": -0.059685817992420766,
+          "posterior_sd": 0.12465179023276718,
+          "z": -0.4788203834134038,
           "credible_interval_excludes_zero": false
         },
         {
           "term": "interrupt[T.youtube]",
-          "posterior_mean": -0.6903097946258446,
-          "posterior_sd": 0.10206735440975538,
-          "z": -6.763277040125439,
+          "posterior_mean": -0.6903087183564514,
+          "posterior_sd": 0.10206714915877968,
+          "z": -6.763280095955065,
           "credible_interval_excludes_zero": true
         },
         {
           "term": "measure[T.pre]",
-          "posterior_mean": -0.003945826658341743,
-          "posterior_sd": 0.08226402910946026,
-          "z": -0.04796539509499879,
+          "posterior_mean": -0.003946153301860114,
+          "posterior_sd": 0.08226398601401545,
+          "z": -0.04796939089710291,
           "credible_interval_excludes_zero": false
         },
         {
           "term": "interrupt[T.rest]:measure[T.pre]",
-          "posterior_mean": 0.1272889028906222,
-          "posterior_sd": 0.1574742817579648,
-          "z": 0.8083155005987772,
+          "posterior_mean": 0.12728882701267713,
+          "posterior_sd": 0.15747430389715833,
+          "z": 0.8083149051149677,
           "credible_interval_excludes_zero": false
         },
         {
           "term": "interrupt[T.twitter]:measure[T.pre]",
-          "posterior_mean": 0.8858150782962442,
-          "posterior_sd": 0.2121893532240342,
-          "z": 4.174644320447977,
+          "posterior_mean": 0.8858151528820456,
+          "posterior_sd": 0.212189283559347,
+          "z": 4.174646042547634,
           "credible_interval_excludes_zero": true
         },
         {
           "term": "interrupt[T.youtube]:measure[T.pre]",
-          "posterior_mean": 0.19888305189950084,
-          "posterior_sd": 0.1475125316937919,
-          "z": 1.3482451261316866,
+          "posterior_mean": 0.1988828974407344,
+          "posterior_sd": 0.14751250419089953,
+          "z": 1.3482443304152385,
           "credible_interval_excludes_zero": false
         }
       ]
@@ -734,58 +734,58 @@
       "terms": [
         {
           "term": "Intercept",
-          "posterior_mean": 0.040537470377080165,
-          "posterior_sd": 0.07738069981769512,
-          "z": 0.5238705578081398,
+          "posterior_mean": 0.040537482688824227,
+          "posterior_sd": 0.07738071065793266,
+          "z": 0.5238706435254035,
           "credible_interval_excludes_zero": false
         },
         {
           "term": "interrupt[T.rest]",
-          "posterior_mean": 3.2423252913697667,
-          "posterior_sd": 0.2068141199884226,
-          "z": 15.677485132791084,
+          "posterior_mean": 3.242325484649403,
+          "posterior_sd": 0.20681408146613905,
+          "z": 15.677488987519729,
           "credible_interval_excludes_zero": true
         },
         {
           "term": "interrupt[T.twitter]",
-          "posterior_mean": 3.6142985527730325,
-          "posterior_sd": 0.18978395296127606,
-          "z": 19.044279015046662,
+          "posterior_mean": 3.6142981890587906,
+          "posterior_sd": 0.18978403911748526,
+          "z": 19.044268453056635,
           "credible_interval_excludes_zero": true
         },
         {
           "term": "interrupt[T.youtube]",
-          "posterior_mean": 1.885042634297093,
-          "posterior_sd": 0.14989574627686078,
-          "z": 12.57569131291676,
+          "posterior_mean": 1.8850425097240195,
+          "posterior_sd": 0.14989585448048418,
+          "z": 12.575681403980685,
           "credible_interval_excludes_zero": true
         },
         {
           "term": "measure[T.pre]",
-          "posterior_mean": 1.6460797100343356,
-          "posterior_sd": 0.10783582913698692,
-          "z": 15.264682649616148,
+          "posterior_mean": 1.6460797177485988,
+          "posterior_sd": 0.10783577934448174,
+          "z": 15.264689769526234,
           "credible_interval_excludes_zero": true
         },
         {
           "term": "interrupt[T.rest]:measure[T.pre]",
-          "posterior_mean": -2.2092479412200263,
-          "posterior_sd": 0.2669190125335946,
-          "z": -8.276847423680502,
+          "posterior_mean": -2.2092476467308146,
+          "posterior_sd": 0.2669189587423219,
+          "z": -8.276847988394774,
           "credible_interval_excludes_zero": true
         },
         {
           "term": "interrupt[T.twitter]:measure[T.pre]",
-          "posterior_mean": -3.1559682329811993,
-          "posterior_sd": 0.21502804451544072,
-          "z": -14.677007550773572,
+          "posterior_mean": -3.155967945015688,
+          "posterior_sd": 0.21502800755907184,
+          "z": -14.677008734077072,
           "credible_interval_excludes_zero": true
         },
         {
           "term": "interrupt[T.youtube]:measure[T.pre]",
-          "posterior_mean": -1.4689862458232956,
-          "posterior_sd": 0.21540013531474525,
-          "z": -6.819801870954238,
+          "posterior_mean": -1.4689863128653913,
+          "posterior_sd": 0.21540011893933028,
+          "z": -6.819802700662142,
           "credible_interval_excludes_zero": true
         }
       ]
@@ -1470,20 +1470,20 @@
   ],
   "figure6": {
     "pre": {
-      "drift": 0.4388426267022439,
-      "noise": 0.5673180312252734,
-      "bound": 0.5777137376820124,
-      "nondectime": 0.4650302812894466,
-      "loss": 457.1557580990578,
+      "drift": 1.48359382395388,
+      "noise": 1.9191518115800839,
+      "bound": 1.9463990041290418,
+      "nondectime": 0.4677400950266672,
+      "loss": 457.33793306040155,
       "n_trials": 205,
       "accuracy": 0.8
     },
     "post": {
       "drift": 0.0,
-      "noise": 2.328718292709964,
-      "bound": 1.6982816775745426,
-      "nondectime": 0.6804976130952057,
-      "loss": 461.47087771247374,
+      "noise": 1.9389676880212052,
+      "bound": 1.4129567571721,
+      "nondectime": 0.6808128160361784,
+      "loss": 461.45560757791236,
       "n_trials": 204,
       "accuracy": 0.49019607843137253
     }
@@ -2339,38 +2339,38 @@
       "quantity": "Fig 6 pre drift",
       "citation": "Section 4.1.3 and Figure 6",
       "reported": 1.46,
-      "observed": 0.44,
-      "delta": -1.02,
+      "observed": 1.48,
+      "delta": 0.020000000000000018,
       "tolerance": 0.05,
-      "status": "MISMATCH",
+      "status": "match",
       "notes": "differential evolution is unseeded"
     },
     {
       "quantity": "Fig 6 pre noise",
       "citation": "Section 4.1.3 and Figure 6",
       "reported": 1.89,
-      "observed": 0.57,
-      "delta": -1.3199999999999998,
+      "observed": 1.92,
+      "delta": 0.030000000000000027,
       "tolerance": 0.05,
-      "status": "MISMATCH",
+      "status": "match",
       "notes": "differential evolution is unseeded"
     },
     {
       "quantity": "Fig 6 pre bound",
       "citation": "Section 4.1.3 and Figure 6",
       "reported": 1.94,
-      "observed": 0.58,
-      "delta": -1.3599999999999999,
+      "observed": 1.95,
+      "delta": 0.010000000000000009,
       "tolerance": 0.05,
-      "status": "MISMATCH",
+      "status": "match",
       "notes": "differential evolution is unseeded"
     },
     {
       "quantity": "Fig 6 pre non-decision time (ms)",
       "citation": "Section 4.1.3 and Figure 6",
       "reported": 461,
-      "observed": 465,
-      "delta": 4,
+      "observed": 468,
+      "delta": 7,
       "tolerance": 2,
       "status": "MISMATCH",
       "notes": ""
@@ -2379,10 +2379,10 @@
       "quantity": "Fig 6 pre fit loss",
       "citation": "Section 4.1.3 and Figure 6",
       "reported": 457.13,
-      "observed": 457.16,
-      "delta": 0.03000000000002956,
+      "observed": 457.34,
+      "delta": 0.20999999999997954,
       "tolerance": 0.2,
-      "status": "match",
+      "status": "MISMATCH",
       "notes": ""
     },
     {
@@ -2409,28 +2409,28 @@
       "quantity": "Fig 6 post noise",
       "citation": "Section 4.1.3 and Figure 6",
       "reported": 2.35,
-      "observed": 2.33,
-      "delta": -0.020000000000000018,
+      "observed": 1.94,
+      "delta": -0.41000000000000014,
       "tolerance": 0.05,
-      "status": "match",
+      "status": "MISMATCH",
       "notes": "differential evolution is unseeded"
     },
     {
       "quantity": "Fig 6 post bound",
       "citation": "Section 4.1.3 and Figure 6",
       "reported": 1.71,
-      "observed": 1.7,
-      "delta": -0.010000000000000009,
+      "observed": 1.41,
+      "delta": -0.30000000000000004,
       "tolerance": 0.05,
-      "status": "match",
+      "status": "MISMATCH",
       "notes": "differential evolution is unseeded"
     },
     {
       "quantity": "Fig 6 post non-decision time (ms)",
       "citation": "Section 4.1.3 and Figure 6",
       "reported": 681,
-      "observed": 680,
-      "delta": -1,
+      "observed": 681,
+      "delta": 0,
       "tolerance": 2,
       "status": "match",
       "notes": ""
@@ -2439,8 +2439,8 @@
       "quantity": "Fig 6 post fit loss",
       "citation": "Section 4.1.3 and Figure 6",
       "reported": 461.46,
-      "observed": 461.47,
-      "delta": 0.010000000000047748,
+      "observed": 461.46,
+      "delta": 0.0,
       "tolerance": 0.2,
       "status": "match",
       "notes": ""
@@ -2473,7 +2473,7 @@
       "delta": -0.007000000000000006,
       "tolerance": 0.01,
       "status": "match",
-      "notes": "BayesFactor's anovaBF is Monte Carlo; this is quadrature"
+      "notes": "JZS r=0.5 by quadrature; the paper names no prior or software"
     },
     {
       "quantity": "SUQ F",
@@ -2503,7 +2503,7 @@
       "delta": 0.0,
       "tolerance": 0.01,
       "status": "match",
-      "notes": "BayesFactor's anovaBF is Monte Carlo; this is quadrature"
+      "notes": "JZS r=0.5 by quadrature; the paper names no prior or software"
     },
     {
       "quantity": "BSMARS F",
@@ -2533,7 +2533,7 @@
       "delta": 0.0,
       "tolerance": 0.01,
       "status": "match",
-      "notes": "BayesFactor's anovaBF is Monte Carlo; this is quadrature"
+      "notes": "JZS r=0.5 by quadrature; the paper names no prior or software"
     }
   ]
 }

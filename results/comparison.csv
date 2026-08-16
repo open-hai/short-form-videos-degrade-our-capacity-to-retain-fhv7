@@ -79,23 +79,23 @@ Table 1 effect size[LD/nondectime/measure],Table 1,-0.007,-0.007,0.0,0.01,match,
 Table 1 F[LD/nondectime/interaction],Table 1,0.636,0.636,0.0,0.01,match,ART
 Table 1 effect size[LD/nondectime/interaction],Table 1,-0.019,-0.019,0.0,0.01,match,partial omega^2
 Fig 6 pre accuracy %,Section 4.1.3 and Figure 6,80.0,80.0,0.0,0.01,match,
-Fig 6 pre drift,Section 4.1.3 and Figure 6,1.46,0.44,-1.02,0.05,MISMATCH,differential evolution is unseeded
-Fig 6 pre noise,Section 4.1.3 and Figure 6,1.89,0.57,-1.3199999999999998,0.05,MISMATCH,differential evolution is unseeded
-Fig 6 pre bound,Section 4.1.3 and Figure 6,1.94,0.58,-1.3599999999999999,0.05,MISMATCH,differential evolution is unseeded
-Fig 6 pre non-decision time (ms),Section 4.1.3 and Figure 6,461.0,465.0,4.0,2.0,MISMATCH,
-Fig 6 pre fit loss,Section 4.1.3 and Figure 6,457.13,457.16,0.03000000000002956,0.2,match,
+Fig 6 pre drift,Section 4.1.3 and Figure 6,1.46,1.48,0.020000000000000018,0.05,match,differential evolution is unseeded
+Fig 6 pre noise,Section 4.1.3 and Figure 6,1.89,1.92,0.030000000000000027,0.05,match,differential evolution is unseeded
+Fig 6 pre bound,Section 4.1.3 and Figure 6,1.94,1.95,0.010000000000000009,0.05,match,differential evolution is unseeded
+Fig 6 pre non-decision time (ms),Section 4.1.3 and Figure 6,461.0,468.0,7.0,2.0,MISMATCH,
+Fig 6 pre fit loss,Section 4.1.3 and Figure 6,457.13,457.34,0.20999999999997954,0.2,MISMATCH,
 Fig 6 post accuracy %,Section 4.1.3 and Figure 6,49.02,49.02,0.0,0.01,match,
 Fig 6 post drift,Section 4.1.3 and Figure 6,0.0,0.0,0.0,0.05,match,differential evolution is unseeded
-Fig 6 post noise,Section 4.1.3 and Figure 6,2.35,2.33,-0.020000000000000018,0.05,match,differential evolution is unseeded
-Fig 6 post bound,Section 4.1.3 and Figure 6,1.71,1.7,-0.010000000000000009,0.05,match,differential evolution is unseeded
-Fig 6 post non-decision time (ms),Section 4.1.3 and Figure 6,681.0,680.0,-1.0,2.0,match,
-Fig 6 post fit loss,Section 4.1.3 and Figure 6,461.46,461.47,0.010000000000047748,0.2,match,
+Fig 6 post noise,Section 4.1.3 and Figure 6,2.35,1.94,-0.41000000000000014,0.05,MISMATCH,differential evolution is unseeded
+Fig 6 post bound,Section 4.1.3 and Figure 6,1.71,1.41,-0.30000000000000004,0.05,MISMATCH,differential evolution is unseeded
+Fig 6 post non-decision time (ms),Section 4.1.3 and Figure 6,681.0,681.0,0.0,2.0,match,
+Fig 6 post fit loss,Section 4.1.3 and Figure 6,461.46,461.46,0.0,0.2,match,
 ENGAGE F,Section 4.2,2.59,2.592,0.002000000000000224,0.01,match,
 ENGAGE p,Section 4.2,0.062,0.062,0.0,0.001,match,
-ENGAGE BF01,Section 4.2,0.893,0.886,-0.007000000000000006,0.01,match,BayesFactor's anovaBF is Monte Carlo; this is quadrature
+ENGAGE BF01,Section 4.2,0.893,0.886,-0.007000000000000006,0.01,match,JZS r=0.5 by quadrature; the paper names no prior or software
 SUQ F,Section 4.2,2.267,2.267,0.0,0.01,match,
 SUQ p,Section 4.2,0.091,0.091,0.0,0.001,match,
-SUQ BF01,Section 4.2,1.213,1.213,0.0,0.01,match,BayesFactor's anovaBF is Monte Carlo; this is quadrature
+SUQ BF01,Section 4.2,1.213,1.213,0.0,0.01,match,JZS r=0.5 by quadrature; the paper names no prior or software
 BSMARS F,Section 4.2,1.065,1.065,0.0,0.01,match,
 BSMARS p,Section 4.2,0.371,0.371,0.0,0.001,match,
-BSMARS BF01,Section 4.2,3.903,3.903,0.0,0.01,match,BayesFactor's anovaBF is Monte Carlo; this is quadrature
+BSMARS BF01,Section 4.2,3.903,3.903,0.0,0.01,match,JZS r=0.5 by quadrature; the paper names no prior or software
