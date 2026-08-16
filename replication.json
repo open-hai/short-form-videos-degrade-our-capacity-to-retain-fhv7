@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "paper": {
+    "key": "10.1145/3544548.3580778",
+    "scheme": "doi",
+    "title": "Short-Form Videos Degrade Our Capacity to Retain Intentions: Effect of Context Switching On Prospective Memory",
+    "slug": "short-form-videos-degrade-our-capacity-to-retain"
+  },
+  "reproduction": {
+    "repo": "open-hai/short-form-videos-degrade-our-capacity-to-retain-fhv7",
+    "created": "2026-08-16T14:59:54.856136221Z",
+    "method_digest": "sha256:b12fdb93d6aa4fb34e7a8bce50c9b0dcf45eddc635730f52111affde7495a259",
+    "verdict": "passed"
+  },
+  "redistribution": {
+    "third_party_data": false,
+    "review": "clear"
+  },
+  "findings": {
+    "present": true
+  }
+}
