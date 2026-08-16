@@ -1,0 +1,395 @@
+{
+  "schema": 1,
+  "verdict": "partial",
+  "summary": "The paper's headline empirical claim reproduces exactly from the authors' released CC-0 trial data: prospective-memory accuracy collapses after a TikTok interruption and nowhere else, with every published coefficient, confidence interval and t value of the accuracy LMMs recovered to the precision printed (PM: intercept 0.487 CI [0.40,0.57] t(110)=10.94; Rest beta=0.456 t=7.25; Twitter 0.489/7.77; YouTube 0.342/5.42). Table 1 comes back with 22 of 24 F values matching to three decimals from the released DDM parameters, the questionnaire ANOVAs match exactly and two of three Bayes factors match to four digits. Six components reproduce only partially and one is blocked. The heaviest finding is not an arithmetic failure but a modelling one: the DDM is specified with drift, noise and bound all free, so the three are identified only up to a common scale factor, the optimiser is unseeded, and refitting all 240 cells gives bound estimates correlating r=0.17 with the published ones while the ratios correlate r>0.99 - recomputing Table 1 on refits flips 4 of 24 significance decisions, including the reported significant effect of interruption on the PM decision bound. Two further contradictions: the paper's 'we did not report any significant results' for reaction times is contradicted by the authors' own released supplementary notebook and by this re-implementation (LD RT TikTok x post p<.001; PM RT YouTube x post p=.007), and the released data contain 14 PM cue trials per block rather than the 16 the method states. The outer loop here is the entire human study - 60 participants doing a dual lexical-decision/prospective-memory task around a personalised 10-minute social-media interruption - and none of it was attempted or simulated; what makes so much of this paper checkable at all is that the authors published trial-level data.",
+  "graded_at": "2026-08-16T16:20:00Z",
+  "components": { "verified": 9, "partial": 6, "blocked": 1, "total": 16 },
+  "boundary": [
+    {
+      "claim": "Response accuracy is the number of correct key presses divided by the number of key presses, derived per participant, task, condition and block",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "Independent derivation in src/accuracy.py matches the authors' released acc.csv on all 240 rows, maximum absolute difference 1.1e-16",
+      "citation": "Section 4.1.1"
+    },
+    {
+      "claim": "In the lexical decision task no interruption condition affects accuracy (LMM accuracy ~ interrupt + (1|user_id))",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "Refit with statsmodels MixedLM: beta = -0.001 (Rest), 0.005 (Twitter), -0.067 (YouTube); t(114) = -0.03, 0.11, -1.47 - identical to the paper; intercept CI [0.916, 1.042] vs [0.92, 1.04]",
+      "citation": "Section 4.1.1, Lexical Decision Task",
+      "mismatch": {
+        "kind": "numeric",
+        "reported": "R2 = 0.67",
+        "observed": "conditional R2 = 0.99 (marginal 0.05)",
+        "delta": "+0.32 conditional; the authors' own released notebook also prints 0.99, and 0.67 is the PM model's value"
+      }
+    },
+    {
+      "claim": "PM accuracy after the interruption drops only in the TikTok condition (LMM accuracy ~ interrupt * measure + (1|user_id))",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "Intercept (TikTok/post) 0.487 CI [0.40,0.57] t(110)=10.94; Rest beta=0.456 t=7.25, Twitter 0.489 t=7.77, YouTube 0.342 t=5.42, pre 0.314 t=6.70 - every t identical, every beta within 0.005; conditional R2 0.667 vs 0.67",
+      "citation": "Section 4.1.1, Prospective Memory Task"
+    },
+    {
+      "claim": "Only the PM task under TikTok differs from the LD task (LMM accuracy ~ interrupt * task + (1|user_id))",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "TikTok x PM beta = -0.277, t(230) = -5.01 vs reported -0.28, -5.01; Twitter x PM -0.005/-0.10; YouTube x PM -0.025/-0.46; conditional R2 0.380 vs 0.38",
+      "citation": "Section 4.1.1, Behavioral accuracy Comparison between LD and PM tasks"
+    },
+    {
+      "claim": "A trial-level binomial regression with per-item and per-participant effects gives results 'completely consistent' with the accuracy LMMs",
+      "loop": "inner",
+      "outcome": "partial",
+      "evidence": "Variational-Bayes binomial GLMM reproduces the sign and ordering of the released lme4 fit (PM: Rest +3.24, Twitter +3.61, YouTube +1.89, pre +1.65 against lme4's +3.54/+4.23/+2.33/+1.87). Blocker: statsmodels has no Laplace/AGQ binomial GLMM with crossed random effects, and the authors' own lme4 fit reports non-convergence (max|grad| = 1.07)",
+      "citation": "Section 4.1.1, footnote 2"
+    },
+    {
+      "claim": "Neither the LD nor the PM reaction-time analysis produced any significant result",
+      "loop": "inner",
+      "outcome": "partial",
+      "evidence": "No Gamma GLMM with crossed random effects exists in Python; a log-normal LMM on the same trials lands within 0.01 of the authors' released Gamma-log coefficients and is used instead",
+      "citation": "Section 4.1.2",
+      "mismatch": {
+        "kind": "contradiction",
+        "reported": "'we did not report any significant results' (LD) and 'we did not report any significant difference' (PM)",
+        "observed": "LD RT TikTok x post beta = -0.053, t = -5.17, p < .001 and Twitter x post p = .025; PM RT YouTube x post beta = -0.082, t = -2.69, p = .007. The authors' own released notebook appendix1 reports the same two effects (-0.05, p < .001; -0.08, p = .010)",
+        "delta": "two effects the paper says do not exist are present in its own supplement"
+      }
+    },
+    {
+      "claim": "A four-parameter drift-diffusion model was fitted with PyDDM per participant, task and block (240 fits)",
+      "loop": "inner",
+      "outcome": "partial",
+      "evidence": "Refitting all 240 cells with the authors' settings recovers non-decision time (r = 0.999, 0.3% median deviation) but not the rest: drift r = 0.88, noise r = 0.77, bound r = 0.17, ~12% median deviation each, while drift/noise r = 0.999 and bound/noise r = 0.994. With sigma left free and no seed the model is identified only up to a common scale factor, so the published parameter values are one draw",
+      "citation": "Sections 3.6 and 4.1.3",
+      "mismatch": {
+        "kind": "numeric",
+        "reported": "per-participant drift, noise and bound as published in ddm.csv",
+        "observed": "refits on the same data with the same settings",
+        "delta": "bound Pearson r = 0.17; median absolute deviation 12% for drift, noise and bound"
+      }
+    },
+    {
+      "claim": "Two-way ANOVAs on the fitted DDM parameters show significant effects on drift, variance and bound in the PM task and none in the LD task (Table 1)",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "Recomputed from the released ddm.csv with the Shapiro-gated ART / parametric rule: 22 of 24 F values match to three decimals (PM drift interrupt 4.078, interaction 6.466; PM noise pre-post 12.593; PM non-decision pre-post 15.851; all eight LD rows) and the effect-size column is recovered as partial omega^2 = df1(F-1)/(df1(F-1)+60)",
+      "citation": "Table 1, Section 4.1.3",
+      "mismatch": {
+        "kind": "numeric",
+        "reported": "PM bound: interruption F = 3.020 (p = .037, marked significant), interaction F = 2.385",
+        "observed": "F = 3.221 (p = .029) and F = 2.233 (p = .094) from the released parameters; on refitted parameters F = 0.948 (p = .424) and 0.713",
+        "delta": "+0.201 and -0.152 on the released parameters; the reported significant bound effect disappears entirely on a refit"
+      }
+    },
+    {
+      "claim": "ART post-hoc contrasts locate the PM effects: TikTok pre-vs-post on drift, TikTok against every other condition on drift and variance, TikTok vs Rest on bound",
+      "loop": "inner",
+      "outcome": "partial",
+      "evidence": "The central contrast reproduces (drift, TikTok pre vs post, t(14) = 3.80, p_holm = .020 against the paper's t = -4.683, p < .001) but the between-condition contrasts do not (TikTok vs Rest/Twitter/YouTube on drift: p_holm = .26/.15/.65 here against .002/<.001/.014). Blocker: art.con's ART-C with emmeans Kenward-Roger df has no Python equivalent, and the paper never states which family each Holm correction covered - its df jump between 56, 91.45, 106.93 and 112",
+      "citation": "Section 4.1.3, Figure 5"
+    },
+    {
+      "claim": "Pooled TikTok PM fits: 80.00% accuracy and drift 1.46 before the interruption, 49.02% and drift 0.000 after, with non-decision time rising 461 -> 681 ms (Figure 6)",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "Accuracies 80.00% and 49.02% exact; fit loss 457.16 vs 457.13 and 461.47 vs 461.46; non-decision time 465 ms and 680 ms; post-interruption drift exactly 0.000; the qualitative pattern (drift to zero, variance up, bound down, non-decision time up) reproduces in every repeat",
+      "citation": "Section 4.1.3 and Figure 6",
+      "mismatch": {
+        "kind": "numeric",
+        "reported": "pre mu = 1.46, sigma = 1.89, B = 1.94; post sigma = 2.35, B = 1.71",
+        "observed": "in the recorded run pre mu = 0.44, sigma = 0.57, B = 0.58 (same ray: mu/sigma = 0.774, B/sigma = 1.018, same loss); post sigma = 2.33, B = 1.70",
+        "delta": "pre parameters differ by up to -1.36 absolute between equally good fits; across 8 repeats mu ranges 1.21-1.46 and one repeat reproduces the published triple almost exactly"
+      }
+    },
+    {
+      "claim": "One-way ANOVAs find no difference between conditions in engagement, SUQ-A or BSMAS",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "F(3,56) = 2.592 / 2.267 / 1.065 and p = .062 / .091 / .371 against the paper's 2.59 / 2.267 / 1.065 and .062 / .091 / .371",
+      "citation": "Section 4.2"
+    },
+    {
+      "claim": "Bayes factors quantify the null: BF01 = 0.893 (engagement), 1.213 (SUQ-A), 3.903 (BSMAS)",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "JZS g-prior (rscaleFixed = 0.5) by quadrature gives BF01 = 1.2131 and 3.9030, matching the reported 1.213 and 3.903",
+      "citation": "Section 4.2",
+      "mismatch": {
+        "kind": "numeric",
+        "reported": "engagement BF01 = 0.893",
+        "observed": "0.8856",
+        "delta": "-0.0074 (-0.8%), within the Monte-Carlo error of BayesFactor::anovaBF against quadrature here"
+      }
+    },
+    {
+      "claim": "Figures 3 and 4: RT distributions split by correct/error, and pre/post accuracy per condition, showing the error mass exploding only in TikTok post-interruption PM trials",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "Redrawn from the trial data in results/fig3_rt_ld.png, results/fig3_rt_pm.png and results/fig4_accuracy.png; same qualitative picture, and the cell means behind Figure 4 are in results/accuracy_cell_means.csv (TikTok PM 80.1% pre -> 48.7% post, all other cells flat)",
+      "citation": "Figures 3 and 4"
+    },
+    {
+      "claim": "Figure 5: fitted DDM parameters in the PM task, pre vs post, with post-hoc significance brackets",
+      "loop": "inner",
+      "outcome": "partial",
+      "evidence": "Redrawn in results/fig5_ddm_pm.png and the pre/post pattern matches, but the plotted quantities are the non-identified parameters of the DDM component and the significance brackets depend on contrasts that could not be reproduced",
+      "citation": "Figure 5"
+    },
+    {
+      "claim": "Design as run: 60 participants, 15 per condition, 160 LD and 16 PM trials per block (176 trials in Task Pre), stimuli six to eight letters long",
+      "loop": "inner",
+      "outcome": "partial",
+      "evidence": "N = 60 with exactly 15 per condition reproduces from the released data",
+      "citation": "Sections 3.1, 3.2, 3.4",
+      "mismatch": {
+        "kind": "numeric",
+        "reported": "16 PM trials per block (32 total), 176 trials in Task Pre, stimulus length 6-8 letters",
+        "observed": "exactly 14 PM cue trials per participant per block (28 total), 174 trials, stimulus length 4-8 letters with 44.7% shorter than six",
+        "delta": "-2 PM trials per block; -2 trials per block; 44.7% of stimuli outside the stated length range"
+      }
+    },
+    {
+      "claim": "Sample descriptives: 35 female / 25 male, aged 19-34 (M = 24.80, SD = 3.40), and weekly screen time per condition",
+      "loop": "inner",
+      "outcome": "blocked",
+      "evidence": "Blocker: the released data contain no demographic or screen-time variables (q.csv holds only scale scores), and the beginning/ending surveys were never released, so nothing in Section 3.1 can be recomputed",
+      "citation": "Section 3.1"
+    },
+    {
+      "claim": "60 participants were recruited by university mailing list and social media, all fluent German speakers with normal or corrected-to-normal vision and no neurological or psychiatric history",
+      "loop": "outer",
+      "outcome": "not_scored",
+      "evidence": "Requires human participants and eligibility screening; not attempted",
+      "citation": "Section 3.1"
+    },
+    {
+      "claim": "Participants were assigned to the platform they used most in the previous week, or to Rest, based on a self-reported screen-time survey",
+      "loop": "outer",
+      "outcome": "not_scored",
+      "evidence": "The assignment consumes a per-person self-report that only a participant can supply; not attempted",
+      "citation": "Section 3.1 and Figure 2"
+    },
+    {
+      "claim": "Participants performed a simultaneous lexical decision and prospective memory task in PsychoPy, pressing N/M for word/non-word and Q/W/E for the cue words blau/lila/gruen, on a 165 Hz monitor with all other keys masked",
+      "loop": "outer",
+      "outcome": "not_scored",
+      "evidence": "The behavioural data are produced by human key presses under a specific apparatus; the program itself was never released; not attempted",
+      "citation": "Sections 3.2 and 3.4, Figure 1"
+    },
+    {
+      "claim": "A 10-minute interruption in which participants scrolled their own Twitter or TikTok feed, watched one chosen YouTube video, or rested without screens",
+      "loop": "outer",
+      "outcome": "not_scored",
+      "evidence": "The manipulation is personalised and executed in third-party apps on the participant's own phone; not attempted and not simulated",
+      "citation": "Section 3.3"
+    },
+    {
+      "claim": "Beginning and ending surveys collected platform use, screen time, engagement, SUQ-A and BSMAS",
+      "loop": "outer",
+      "outcome": "not_scored",
+      "evidence": "Self-report from participants; not attempted",
+      "citation": "Section 3.5"
+    },
+    {
+      "claim": "The session was run by an experimenter who took informed consent, ran a training block and prompted participants back to the computer after the break",
+      "loop": "outer",
+      "outcome": "not_scored",
+      "evidence": "An experimenter is in the loop; not attempted",
+      "citation": "Section 3.4"
+    }
+  ],
+  "decisions": [
+    {
+      "question": "Is a trial a PM trial because the stimulus was a cue word, or because the participant pressed a PM key?",
+      "where": "Section 4.1.1 defines accuracy only as correct key presses over key presses; Section 3.2 defines the three cue words but never the labelling rule. The released task column labels by response: 79 non-cue trials answered with a PM key count as PM errors, 37 cue trials answered with an LD key count as LD errors",
+      "assumed": "Kept the released response-based labelling as primary, and implemented stimulus-based labelling as a switch (src/accuracy.py, label_by)",
+      "sensitivity": "Low: with stimulus-based labelling the PM model's Rest effect moves 0.456 -> 0.452 and the interaction -0.361 -> -0.391, all p < .001; the conclusion is unchanged"
+    },
+    {
+      "question": "Do trials with no key press count as errors or drop out of the accuracy denominator?",
+      "where": "Section 4.1.1's ratio is silent about the 103 no-response trials in the released data",
+      "assumed": "Dropped, following the authors' preprocessing notebook",
+      "sensitivity": "Low: counting them as errors moves the PM Rest effect 0.456 -> 0.440, all p < .001; conclusion unchanged"
+    },
+    {
+      "question": "Is the training block excluded from analysis?",
+      "where": "Section 3.4 describes a training stage but states no exclusion rule; the released file marks 600 training trials",
+      "assumed": "Excluded",
+      "sensitivity": "Low: folding training trials into the pre block moves the PM pre effect 0.314 -> 0.318 and the Rest effect not at all (0.456), all p < .001"
+    },
+    {
+      "question": "What degrees of freedom back the reported Wald t values?",
+      "where": "Section 4.1.1 quotes t(114), t(110) and t(230) without stating any df rule",
+      "assumed": "N - p - 2, which reproduces all three exactly",
+      "sensitivity": "Negligible for inference: using N - p instead changes p values in the fourth decimal and flips no conclusion"
+    },
+    {
+      "question": "Is the quoted R2 marginal or conditional?",
+      "where": "Section 4.1.1 quotes a bare 'R2 = 0.67' for two different models and 'R2 = 0.38' for a third",
+      "assumed": "Conditional (Nakagawa), which matches the PM model (0.667) and the combined model (0.380)",
+      "sensitivity": "Decisive for one claim: for the LD model conditional is 0.99 and marginal 0.05, so no reading gives 0.67 - the LD figure appears to be the PM model's value copied across"
+    },
+    {
+      "question": "Every DDM fitting detail: which parameters are free, their search ranges, the loss function, the optimiser, dx, dt, and the random seed",
+      "where": "Section 3.6 names the four parameters and Section 4.1.3 says only 'We used PyDDM to fit responses in the LD and PM tasks per participant'; everything else lives in the unreferenced notebook appendix2_ddm_fitting.ipynb",
+      "assumed": "drift in [0,50], noise in [0.5,4], bound in [0.1,2], non-decision in [0,1], LossRobustBIC, differential evolution, dx = 1e-3, T_dur = 3 s, no seed (dt = 1e-3 for the 240-cell refits, 1e-4 for the pooled fits)",
+      "sensitivity": "High: leaving sigma free makes (mu, sigma, B) identified only up to a common scale, so 8 unseeded repeats of the same fit give mu in [1.21, 1.46] at constant loss; refits correlate r = 0.17 with the published bound values; recomputing Table 1 on refits flips 4 of 24 significance decisions, including the reported significant effect of interruption on PM bound (p = .037 -> .424) and two nulls in the LD task that become significant. 7 of 120 PM bound estimates sit exactly on the search boundary B = 2"
+    },
+    {
+      "question": "Which normality test on what, at which alpha, and which effect size on each branch of the ART / parametric decision?",
+      "where": "Section 4 says only 'depending on normality, evaluated by the Shapiro-Wilk test, we report two-way mixed ANOVA results ... or ART ANOVAs for the non-parametric data'",
+      "assumed": "Shapiro-Wilk on the whole parameter column, alpha = .05, ART when p < .05 with partial omega^2, parametric mixed ANOVA otherwise with partial eta^2 - the rule visible in the authors' stats.R",
+      "sensitivity": "Decisive for one row: Shapiro p = .278 sends LD drift down the parametric branch and reproduces F = 2.520 exactly, whereas ART would give F = 2.680 (p = .056)"
+    },
+    {
+      "question": "Which Bayes factor, with which prior scale?",
+      "where": "Section 4.2 reports BF01 values with no prior, no scale and no software named",
+      "assumed": "JZS g-prior with BayesFactor's default rscaleFixed = 0.5, integrated by quadrature",
+      "sensitivity": "Moderate: at r = 0.5 two of three values reproduce exactly, but at r = 0.707 and r = 1 the BSMAS BF01 becomes 6.63 and 12.89, and the engagement BF01 crosses from 0.89 (favouring H1) to 1.24 and 2.04 (favouring H0)"
+    },
+    {
+      "question": "Which trials enter the reaction-time models, and how was the reported model selected?",
+      "where": "Section 4.1.2 gives the formula and says selection was 'guided by BIC criteria', but never states the trial filter",
+      "assumed": "Correct responses only, taken from the authors' notebook; the reported Gamma-log model",
+      "sensitivity": "Structural: in the authors' own released comparison the BIC-minimal model is not the reported one (PM 53.0 vs 155.4; LD -7539 vs -6099), so the stated criterion does not select the reported model, and the paper also describes the GLMM as REML-estimated when glmer prints 'refitting with ML'"
+    },
+    {
+      "question": "How were the questionnaire scales scored - sums, means, how many items?",
+      "where": "Section 3.5 says only 'according to their original documentation'",
+      "assumed": "SUQ-A as an item mean (released values 1.6-6.8 on a 1-7 scale), BSMAS as a sum (5-18), engagement as a single 1-5 item",
+      "sensitivity": "Untestable from the release: only totals were published, not item responses. The released questionnaire PDF duplicates SUQ-A items 1-2 and BSMAS items 6-7, so the number of items actually administered is uncertain, which would rescale any sum-scored total"
+    },
+    {
+      "question": "Over which family were the post-hoc p values Holm-corrected?",
+      "where": "Section 4.1.3 lists contrasts with degrees of freedom of 56, 91.45, 106.93 and 112 without saying which emmeans call produced each",
+      "assumed": "Holm over all ten contrasts within each DDM parameter",
+      "sensitivity": "High: with this family only the TikTok pre-vs-post drift contrast survives; a narrower family would let several between-condition contrasts through, which is how the paper's pattern arises"
+    },
+    {
+      "question": "Which measures were collected but not reported?",
+      "where": "Sections 3.5 and 4.2 describe engagement, SUQ-A and BSMAS only",
+      "assumed": "Analysed those three, and reported the extras rather than modelling them",
+      "sensitivity": "Unknown: q.csv also contains META_CC, META_POS, META_CSC, META_NEG and META_NC, five metacognition subscales that appear in no section of the paper and in no released questionnaire, so their relation to the reported analyses cannot be established"
+    },
+    {
+      "question": "Exactly which trials were pooled for the aggregate TikTok fits of Figure 6?",
+      "where": "Section 4.1.3 says 'for all 15 participants' without stating any trial filter",
+      "assumed": "All TikTok PM trials with a response, pre and post separately (205 and 204 trials)",
+      "sensitivity": "None: this recovers the published 80.00% / 49.02% accuracies and the losses 457.13 / 461.46 to two decimals"
+    },
+    {
+      "question": "How many YouTube videos were offered, and which ones?",
+      "where": "Section 3.1 says participants chose 'one video out of ten options'; Section 3.3 says 'a playlist of 10 minute YouTube videos'",
+      "assumed": "The released playlist file is the ground truth",
+      "sensitivity": "Design-level: the released YT_interruption_Videos_list.txt lists 11 videos, not ten, and video identity, duration and current availability are otherwise unrecoverable"
+    }
+  ],
+  "scorecard": [
+    {
+      "criterion": "code",
+      "found": true,
+      "url": "https://github.com/mimuc/media-prospective-memory",
+      "searched": []
+    },
+    {
+      "criterion": "data",
+      "found": true,
+      "url": "https://raw.githubusercontent.com/mimuc/media-prospective-memory/main/data/rt.csv",
+      "searched": []
+    },
+    {
+      "criterion": "license",
+      "found": true,
+      "url": "https://github.com/mimuc/media-prospective-memory/blob/main/LICENSE",
+      "searched": []
+    },
+    {
+      "criterion": "preregistration",
+      "found": false,
+      "url": null,
+      "searched": [
+        "OSF registrations endpoint for the project (api.osf.io/v2/nodes/kzxy7/registrations/) - 0 registrations",
+        "OSF registries title search 'prospective memory' - 10 results, none by these authors",
+        "OSF node search 'short-form videos' - only the unregistered project kzxy7",
+        "the paper itself: no preregistration statement, no registry identifier, no power analysis",
+        "the GitHub README and the OSF wiki - no registration link"
+      ]
+    },
+    {
+      "criterion": "supplement",
+      "found": true,
+      "url": "https://osf.io/download/gcbmr/",
+      "searched": [
+        "ACM DL supplementary tab - HTTP 403 (Cloudflare), could not be inspected",
+        "arXiv ancillary files (arxiv.org/src/2302.03714/anc) - HTTP 404",
+        "GitHub repository - no questionnaire, no video list, no experiment program"
+      ]
+    }
+  ],
+  "released": [
+    {
+      "where": "GitHub mimuc/media-prospective-memory",
+      "what": "analysis notebooks, stats.py, stats.R, requirements.txt, GPL-3.0 licence, the paper PDF, data/{rt,acc,ddm,q}.csv, figures/*.pdf",
+      "result": "found",
+      "url": "https://github.com/mimuc/media-prospective-memory"
+    },
+    {
+      "where": "GitHub repository, experiment program",
+      "what": "the PsychoPy program and stimulus lists that Section 7 says are available there",
+      "result": "none",
+      "url": "https://github.com/mimuc/media-prospective-memory"
+    },
+    {
+      "where": "OSF project kzxy7",
+      "what": "same code and data plus CHI23_Questionnaires.pdf and YT_interruption_Videos_list.txt",
+      "result": "found",
+      "url": "https://osf.io/kzxy7/"
+    },
+    {
+      "where": "OSF registrations for kzxy7",
+      "what": "a preregistration",
+      "result": "none",
+      "url": "https://api.osf.io/v2/nodes/kzxy7/registrations/"
+    },
+    {
+      "where": "arXiv 2302.03714",
+      "what": "preprint PDF; ancillary files",
+      "result": "partial",
+      "url": "https://arxiv.org/abs/2302.03714"
+    },
+    {
+      "where": "ACM Digital Library",
+      "what": "the published version and its supplementary material tab",
+      "result": "none",
+      "url": "https://dl.acm.org/doi/10.1145/3544548.3580778"
+    },
+    {
+      "where": "LMU MMI publication database",
+      "what": "author copy of the paper",
+      "result": "found",
+      "url": "https://www.mmi.ifi.lmu.de/pubdb/publications/pub/chiossi2023short/chiossi2023short.pdf"
+    },
+    {
+      "where": "Zenodo",
+      "what": "an archived copy of the artifact (searched by topic and by author name)",
+      "result": "none",
+      "url": "https://zenodo.org/api/records?q=creators.person_or_org.name:%22Chiossi%22"
+    },
+    {
+      "where": "GitHub search across org:mimuc and for psychopy+prospective memory",
+      "what": "a second repository holding the experiment",
+      "result": "none",
+      "url": "https://api.github.com/search/repositories?q=org:mimuc+memory"
+    },
+    {
+      "where": "OSF registries title search",
+      "what": "a preregistration under any of the authors' names",
+      "result": "none",
+      "url": "https://api.osf.io/v2/registrations/?filter%5Btitle%5D=prospective%20memory"
+    }
+  ]
+}
