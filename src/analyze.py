@@ -88,7 +88,7 @@ def main() -> int:
     comparisons = []
 
     # ---------------------------------------------------------------- data
-    log("[1/7] loading trials")
+    log("[1/8] loading trials")
     trials = load_trials(args.input)
     desc = describe_trials(trials)
     results["data_description"] = desc
@@ -111,7 +111,7 @@ def main() -> int:
     )
 
     # ------------------------------------------------------------ accuracy
-    log("[2/7] deriving accuracy and fitting the accuracy LMMs")
+    log("[2/8] deriving accuracy and fitting the accuracy LMMs")
     acc = acc_mod.derive_accuracy(trials)
     acc.to_csv(os.path.join(args.out, "accuracy_derived.csv"), index=False)
     acc_mod.cell_means(acc).to_csv(os.path.join(args.out, "accuracy_cell_means.csv"), index=False)
@@ -164,8 +164,27 @@ def main() -> int:
     acc_stim.to_csv(os.path.join(args.out, "accuracy_derived_stimulus_labelled.csv"), index=False)
     results["lmm_sensitivity_stimulus_labelled"] = acc_mod.accuracy_models(acc_stim)
 
+    # ------------------------------------------- trial-level RT / accuracy
+    log("[3/8] trial-level RT and accuracy models")
+    import rt_models
+
+    results["rt_models"] = rt_models.rt_models(trials)
+    results["trial_level_accuracy_models"] = rt_models.trial_level_accuracy_models(trials)
+    for model in results["rt_models"]:
+        sig = [t["term"] for t in model["terms"] if t["p"] < 0.05 and t["term"] != "Intercept"]
+        comparisons.append(
+            compare(
+                1 if sig else 0,
+                0,
+                0,
+                f"Section 4.1.2: significant fixed effects in {model['model'].split(' ')[0]} RT model",
+                "Section 4.1.2",
+                f"paper reports none; found: {sig if sig else 'none'}",
+            )
+        )
+
     # ----------------------------------------------------------------- DDM
-    log("[3/7] DDM parameters")
+    log("[4/8] DDM parameters")
     if args.ddm:
         ddm = pd.read_csv(args.ddm)
         results["ddm_source"] = f"supplied: {os.path.abspath(args.ddm)}"
@@ -180,7 +199,7 @@ def main() -> int:
         results["ddm_source"] = f"refitted here (dt={args.ddm_dt})"
 
     if ddm is not None:
-        log("[4/7] Table 1 ANOVAs on the DDM parameters")
+        log("[5/8] Table 1 ANOVAs on the DDM parameters")
         table1 = art_anova.anova_table(ddm)
         pd.DataFrame(table1).to_csv(os.path.join(args.out, "table1.csv"), index=False)
         results["table1"] = table1
@@ -200,7 +219,7 @@ def main() -> int:
         results["posthoc_pm"] = posthoc
 
     # ------------------------------------------------------- pooled TikTok
-    log("[5/7] pooled TikTok PM fits (Figure 6)")
+    log("[6/8] pooled TikTok PM fits (Figure 6)")
     import ddm_fit
 
     pooled = ddm_fit.fit_pooled_tiktok(trials, dt=args.ddm_dt)
@@ -228,7 +247,7 @@ def main() -> int:
 
     # ------------------------------------------------------ questionnaires
     if args.questionnaires:
-        log("[6/7] questionnaire ANOVAs and Bayes factors")
+        log("[7/8] questionnaire ANOVAs and Bayes factors")
         q = pd.read_csv(args.questionnaires)
         rows = bayes_factor.questionnaire_tests(q)
         results["questionnaires"] = rows
@@ -248,7 +267,7 @@ def main() -> int:
 
     # -------------------------------------------------------------- figures
     if not args.no_figures:
-        log("[7/7] figures")
+        log("[8/8] figures")
         paths = fig_mod.figure3(trials, args.out)
         paths.append(fig_mod.figure4(acc, args.out))
         if ddm is not None:
