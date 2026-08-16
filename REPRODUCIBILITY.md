@@ -68,6 +68,17 @@ all four figures. This paper's contribution is empirical rather than technical, 
 *is* the analysis over the released data — which is exactly why the authors' decision to publish
 trial-level data makes so much of it checkable.
 
+**What a follow-up study would have to cover.** Anyone wanting to confirm this paper's causal
+claim, rather than its arithmetic, has to re-run all six outer-loop rows above: recruit and screen
+a fresh German-speaking sample, reproduce the screen-time-based assignment, rebuild the PsychoPy
+dual task (the program is not released, so it must be written from Section 3.2 and the strings
+inside `rt.csv`), administer a 10-minute personalised feed interruption on participants' own
+devices for each of the four conditions, re-administer the four instruments, and have an
+experimenter run consent, training and the return-to-task prompt. `instrument.json`'s
+`servability` block says component by component why none of that can be served unattended from a
+browser — the interruption in particular happens inside three third-party apps that no page can
+control or verify.
+
 Two components sit near the line and were deliberately placed inner: the **DDM fitting** (it is a
 mechanical model fit over already-collected RTs, not a measurement of people) and the **as-run
 design descriptives** (counting trials in a released file needs no participants). Conversely,

@@ -55,7 +55,7 @@ Each row is a place actually queried on 2026-08-16, with the URL and the result.
 | Zenodo API, creator "Chiossi" | archived artifact copy | **none** | 0 hits |
 | GitHub search `org:mimuc memory` | any second repo (e.g. the experiment program) | **none beyond the one** | only `mimuc/media-prospective-memory` |
 | GitHub search `psychopy prospective memory tiktok` | the experiment program elsewhere | **none** | 0 repositories |
-| GitLab | mirror of the artifact | **none** | no project found under the authors' or the group's names |
+| GitLab project search | a mirror of the artifact | **none** | `gitlab.com/api/v4/projects?search=media-prospective-memory` returns `[]` and `?search=prospective%20memory` returns 0 projects. The user-search endpoint (`/api/v4/users?search=chiossi`) returns HTTP 403 without authentication, so a search by author account could not be run |
 
 ## What the authors released, precisely
 

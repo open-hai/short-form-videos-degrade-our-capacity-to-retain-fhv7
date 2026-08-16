@@ -362,7 +362,7 @@
     },
     {
       "where": "arXiv 2302.03714",
-      "what": "preprint PDF; ancillary files",
+      "what": "the preprint PDF (found) and any attached ancillary files (none)",
       "result": "partial",
       "url": "https://arxiv.org/abs/2302.03714"
     },
@@ -379,7 +379,7 @@
       "url": "https://www.mmi.ifi.lmu.de/pubdb/publications/pub/chiossi2023short/chiossi2023short.pdf"
     },
     {
-      "where": "Zenodo",
+      "where": "Zenodo, creator query \"Chiossi\"",
       "what": "an archived copy of the artifact (searched by topic and by author name)",
       "result": "none",
       "url": "https://zenodo.org/api/records?q=creators.person_or_org.name:%22Chiossi%22"
@@ -395,6 +395,30 @@
       "what": "a preregistration under any of the authors' names",
       "result": "none",
       "url": "https://api.osf.io/v2/registrations/?filter%5Btitle%5D=prospective%20memory"
+    },
+    {
+      "where": "GitLab project search (media-prospective-memory; prospective memory)",
+      "what": "a mirror of the artifact; the user-search endpoint needs authentication and returned 403, so no author-account search was possible",
+      "result": "none",
+      "url": "https://gitlab.com/api/v4/projects?search=media-prospective-memory"
+    },
+    {
+      "where": "changkun.de, author's personal research page",
+      "what": "a project page or artifacts not on GitHub/OSF",
+      "result": "partial",
+      "url": "https://www.changkun.de/research/"
+    },
+    {
+      "where": "Zenodo, topic query \"prospective memory\" AND tiktok",
+      "what": "an archived copy of the artifact",
+      "result": "none",
+      "url": "https://zenodo.org/api/records?q=%22prospective%20memory%22%20AND%20tiktok"
+    },
+    {
+      "where": "arXiv ancillary-file endpoint for 2302.03714",
+      "what": "ancillary data or code attached to the preprint",
+      "result": "none",
+      "url": "https://arxiv.org/src/2302.03714/anc"
     }
   ]
 }
